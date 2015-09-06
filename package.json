@@ -1,0 +1,24 @@
+{
+  "name": "simple-boilerplate",
+  "version": "0.0.0",
+  "description": "A simple boilerplate to create static sites.",
+  "author": "Milson Júnior",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-stylus": "~2.0.6",
+    "gulp-watch": "~4.3.5",
+    "autoprefixer-stylus": "~0.7.1",
+    "gulp-load-plugins": "~1.0.0-rc.1",
+    "jeet": "~6.1.2",
+    "rupture": "~0.6.1",
+    "gulp-plumber": "~1.0.1",
+    "gulp-nunjucks-html": "~1.2.2",
+    "gulp-minify-html": "~1.0.4",
+    "browser-sync": "~2.9.1",
+    "gulp-imagemin": "~2.3.0",
+    "gulp-notify": "~2.2.0",
+    "rucksack-css": "~0.6.7",
+    "poststylus": "~0.2.1"
+  }
+}

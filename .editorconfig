@@ -1,0 +1,25 @@
+; All files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+
+; Views
+[**/*.{html}]
+indent_style = tab
+indent_size = 2
+
+; Styles
+[**/*.{styl,css}]
+indent_style = tab
+indent_size = 2
+
+; JS
+[src/scripts/*.js]
+indent_style = tab
+indent_size = 2
+
+; json, yml
+[**/*{.json,.travis.yml}]
+indent_style = tab
+indent_size = 2

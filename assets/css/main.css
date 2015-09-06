@@ -1,0 +1,5 @@
+
+@media screen and (min-width: 1280px){html,body{font-size:21px}}@font-face{font-family:'Saint Seiya';src:url("/fonts/saint-seiya.eot");src:url("/fonts/saint-seiya.eot?#iefix") format('embedded-opentype'),
+       url("/fonts/saint-seiya.woff") format('woff'),
+       url("/fonts/saint-seiya.ttf") format('truetype'),
+       url("/fonts/saint-seiya.svg") format('svg');font-weight:normal;font-style:normal}html,body{font-size:calc(12px + 9 * ( (100vw - 420px) / 860))}@media screen and (max-width: 420px){html,body{font-size:12px}}
