@@ -1,7 +1,10 @@
 // --------------------------------
 // Load modules
 // --------------------------------
+
 var gulp = require("gulp"),
+	browserify = require("browserify"),
+	source = require("vinyl-source-stream"),
 	browserSync = require("browser-sync"),
 	reload = browserSync.reload,
 	autoprefixer = require("autoprefixer-stylus"),
@@ -16,12 +19,14 @@ var gulp = require("gulp"),
 	paths = {
 		dev: "src/",
 		dest: "assets/",
+		bower: "bower_components/"
 	};
 
 // --------------------------------
-// Task: Nunjucks
+// Task: compile:html
 // --------------------------------
-gulp.task("nunjucks", function(){
+
+gulp.task("compile:html", function(){
 	gulp.src(paths.dev + "views/pages/**/*.html")
 	.pipe(plugins.plumber())
 	.pipe(plugins.nunjucksHtml({
@@ -29,27 +34,45 @@ gulp.task("nunjucks", function(){
 	}))
 	.pipe(plugins.minifyHtml())
 	.pipe(gulp.dest("./"))
-	.pipe(plugins.notify({message: "Successfully compiled templates", onLast: true}))
+	.pipe(plugins.notify({ message: "Successfully compiled templates", onLast: true }))
 });
 
 // --------------------------------
-// Task: Stylus
+// Task: compile:css
 // --------------------------------
-gulp.task("stylus", function(){
+
+gulp.task("compile:css", function(){
 	gulp.src(paths.dev + "styles/*.styl")
 	.pipe(plugins.plumber())
+	.pipe(plugins.sourcemaps.init())
 	.pipe(plugins.stylus({
 		use: [poststylus(rucksack), autoprefixer(), jeet(), rupture()],
 		compress: true
 	}))
-	.pipe(gulp.dest(paths.dest + "css"))
-	.pipe(plugins.notify({message: "Successfully compiled styles", onLast: true}))
+	.pipe(plugins.sourcemaps.write("."))
+	.pipe(gulp.dest(paths.dest + "css/"))
+	.pipe(plugins.notify({ message: "Successfully compiled styles", onLast: true }))
 });
 
 // --------------------------------
-// Task: Imagemin
+// Task: require:javascript
 // --------------------------------
-gulp.task("imagemin", function(){
+
+gulp.task("build:javascript", function(){
+	return browserify({ entries: ["src/scripts/main"], debug: true })
+	.bundle()
+	.pipe(plugins.plumber())
+	.pipe(source("build.js"))
+	.pipe(plugins.streamify(plugins.uglify()))
+	.pipe(gulp.dest(paths.dest + "javascript/"))
+	.pipe(plugins.notify({ message: "Successfully generated package", onLast: true }))
+});
+
+// --------------------------------
+// Task: optimize:images
+// --------------------------------
+
+gulp.task("optimize:images", function(){
 	gulp.src(paths.dev + "images/**/*.{png,jpg,gif}")
 	.pipe(plugins.plumber())
 	.pipe(plugins.imagemin({
@@ -58,12 +81,13 @@ gulp.task("imagemin", function(){
 		multipass: true
 	}))
 	.pipe(gulp.dest(paths.dest + "images/"))
-	.pipe(plugins.notify({message: "Successfully optimized images", onLast: true}))
+	.pipe(plugins.notify({ message: "Successfully optimized images", onLast: true }))
 });
 
 // --------------------------------
 // Task: BrowserSync
 // --------------------------------
+
 gulp.task("browser-sync", function(){
 	browserSync({
 		server: "./"
@@ -71,10 +95,11 @@ gulp.task("browser-sync", function(){
 });
 
 // --------------------------------
-// Task: Watch
+// Task: Default
 // --------------------------------
 
-gulp.task("default", ["nunjucks","stylus","imagemin","browser-sync"], function(){
-	gulp.watch(paths.dev + "/**/*.styl", ["stylus"]).on("change", reload);
-	gulp.watch(paths.dev + "/**/*.html", ["nunjucks"]).on("change", reload);
+gulp.task("default", ["compile:html","compile:css","build:javascript","optimize:images","browser-sync"], function(){
+	gulp.watch(paths.dev + "views/**/*.html", ["compile:html"]).on("change", reload);
+	gulp.watch(paths.dev + "styles/**/*.styl", ["compile:css"]).on("change", reload);
+	gulp.watch(paths.dev + "scripts/**/*.js", ["build:javascript"]).on("change", reload);
 });

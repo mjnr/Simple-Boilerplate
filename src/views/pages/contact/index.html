@@ -1,1 +1,21 @@
 {% extends "layouts/default.html" %}
+
+{% block variables %}
+
+	{{ super() }}
+
+	{% set page = "contact" %}
+	{% set title = "Contact Page" %}
+	{% set description = "contact description" %}
+	{% set keywords = "contact keywords" %}
+
+{% endblock %}
+
+{% block content %}
+
+	<main role="main" class="content container">
+		<h1>Contact Page!</h1>
+		<img src="{{ "../assets/" if page else "assets/" }}images/logo.png" alt="">
+	</main>
+
+{% endblock %}

@@ -1,7 +1,37 @@
-@require "jeet"
-@require "config/properties"
-@require "config/fonts"
+@charset "utf-8";
+
+/*!
+* SIMPLE BOILERPLATE - Fronted Architecture
+* -----------------------------------
+* Author: Milson Júnior
+* URL: https://github.com/mjnr/
+* -----------------------------------
+* Project Name
+* -----------------------------------
+*/
+
+// Config
+// -------------------------
+@require "config/variables"
+@require "config/functions"
+
+// Vendor
+// -------------------------
+@require "vendor/normalize"
+
+// Base
+// -------------------------
+@require "base/fonts"
 @require "base/base"
-@require "partials/header"
-@require "partials/footer"
-// @require "vendor/vendor" Global vendor
+
+// Modules
+// -------------------------
+@require "modules/container"
+@require "modules/animations"
+@require "modules/forms"
+
+// Layout
+// -------------------------
+@require "jeet"
+@require "layout/l-header"
+@require "layout/l-footer"

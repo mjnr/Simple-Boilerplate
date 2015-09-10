@@ -1,34 +1,46 @@
+{% block variables %}
+
+	{% set host = "http://www.example.com" %}
+	{% set page = "" %}
+
+	{% set title = "Título da Página" %}
+	{% set description = "Lorem ipsum dolor sit amet, consectetur." %}
+	{% set keywords = "lorem, ipsum, dolor" %}
+
+	{% set path = ("teste1" if page else "teste2") %}
+
+{% endblock %}
+
 <!DOCTYPE html><!--[if IE 8]><html class="ie8" lang="pt-br"><![endif]-->
 <!--[if IE 9]><html lang="pt-br" class="ie9"><![endif]-->
 <!--[if !IE]><!-->
 <html lang="pt-br"><!--<![endif]-->
-<head>
-	<meta name="language" content="pt-br">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-	<meta http-equiv="Cache-Control" content="no-cache">
-	<meta http-equiv="Expires" content="0">
-	<meta name="contact" content="junior.milson17@gmail.com">
-	<meta name="author" content="Milson Júnior">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- [ Main Stylesheet ]-->
-	<link rel="stylesheet" href="assets/css/style.css">
-</head>
+
+	<head>
+
+		<title>{{ title }}</title>
+
+		<!-- [ Includes Head ]-->
+		{% include "../includes/metatags.html" %}
+	
+		<!-- [ Includes Main Styles ]-->
+		{% include "../includes/styles.html" %}
+
+	</head>
+
 <body>
 
-	<!-- [ Header ]-->
+	<!-- [ Includes Header ]-->
 	{% include "../includes/header.html" %}
 
-	<!-- [ Content ]-->
-	{% block content %}
+		<!-- [ Includes Content ]-->
+		{% block content %}{% endblock %}
 
-	{% endblock %}
-
-	<!-- [ Footer ]-->
+	<!-- [ Includes Footer ]-->
 	{% include "../includes/footer.html" %}
 
-	<!-- [ Main Javascript ]-->
-	<script src="assets/javascript/build.js"></script>
+	<!-- [ Includes Main Javascript ]-->
+	{% include "../includes/scripts.html" %}
 
 </body>
 </html>

@@ -1,0 +1,28 @@
+{
+  "name": "simple-boilerplate",
+  "version": "0.0.0",
+  "authors": [
+    "Milson Júnior <junior.milson17@gmail.com>"
+  ],
+  "description": "A simple boilerplate to create static sites.",
+  "keywords": [
+    "boilerplate",
+    "frontend",
+    "nunjucks",
+    "stylus",
+    "postcss"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "package.json",
+    "src"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "jquery": "~1.11.1",
+    "respond": "~1.4.2"
+  }
+}

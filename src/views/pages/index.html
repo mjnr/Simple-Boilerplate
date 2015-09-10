@@ -1,9 +1,20 @@
 {% extends "layouts/default.html" %}
 
+{% block variables %}
+
+	{{ super() }}
+
+	{% set title = "Página Inicial" %}
+	{% set description = "Lorem ipsum dolor sit amet, consectetur." %}
+	{% set keywords = "lorem, ipsum, dolor" %}
+
+{% endblock %}
+
 {% block content %}
 
 	<main role="main" class="content container">
-		<img src="assets/images/logo.png" alt="">
+		<h1>It Works!</h1>
+		<img src="{{ "../assets/" if page else "assets/" }}images/logo.png" alt="">
 	</main>
 
 {% endblock %}

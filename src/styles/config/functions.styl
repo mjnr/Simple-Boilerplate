@@ -1,0 +1,20 @@
+// -------------------------
+// Functions
+// -------------------------
+
+// Convert px to rem
+// -------------------------
+pxtorem(prop, value)
+	{prop} unit(value, px)
+	{prop} unit((value / baseFontSize), rem)
+
+convertpxtorem(value)
+	return unit((value / baseFontSize), rem)
+
+// Convert px to em
+// -------------------------
+pxtoem(prop, value)
+	{prop} unit((value / baseFontSize), em)
+
+convertpxtoem(value)
+	return unit((value / baseFontSize), em)
