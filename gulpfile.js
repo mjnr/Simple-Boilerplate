@@ -1,4 +1,17 @@
 // --------------------------------
+//	Gulpfile
+// --------------------------------
+//
+//	Available tasks:
+//	`gulp`
+//	`gulp compile:html`
+//	`gulp compile:css`
+//	`gulp optimize:images`
+//	`gulp build:javascript`
+//
+// --------------------------------
+
+// --------------------------------
 // Load modules
 // --------------------------------
 

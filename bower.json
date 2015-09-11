@@ -22,7 +22,6 @@
   ],
   "license": "ISC",
   "devDependencies": {
-    "jquery": "~1.11.1",
-    "respond": "~1.4.2"
+    "jquery": "~1.11.1"
   }
 }

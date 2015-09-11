@@ -8,8 +8,7 @@
     "jquery": "./bower_components/jquery/dist/jquery.js"
   },
   "browserify-shim": {
-    "jquery": "$",
-    "three": "global:THREE"  
+    "jquery": "$"
   },
   "browserify": {
     "transform": ["browserify-shim"]
