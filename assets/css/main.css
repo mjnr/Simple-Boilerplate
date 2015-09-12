@@ -198,11 +198,11 @@ th {
 }
 @font-face {
   font-family: 'Saint Seiya';
-  src: url("/fonts/saint-seiya.eot");
-  src: url("/fonts/saint-seiya.eot?#iefix") format('embedded-opentype'),
-       url("/fonts/saint-seiya.woff") format('woff'),
-       url("/fonts/saint-seiya.ttf") format('truetype'),
-       url("/fonts/saint-seiya.svg") format('svg');
+  src: url("../fonts/saint-seiya.eot");
+  src: url("../fonts/saint-seiya.eot?#iefix") format('embedded-opentype'),
+       url("../fonts/saint-seiya.woff") format('woff'),
+       url("../fonts/saint-seiya.ttf") format('truetype'),
+       url("../fonts/saint-seiya.svg") format('svg');
   font-style: normal;
   font-weight: normal;
 }
