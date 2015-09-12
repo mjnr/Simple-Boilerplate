@@ -3,11 +3,19 @@
 // --------------------------------
 //
 //	Available tasks:
-//	`gulp`
-//	`gulp compile:html`
-//	`gulp compile:css`
+//
+//	`gulp` or `gulp watch`.
+//	`gulp build:javascript`.
+//	`gulp build:styles`.
+//
+//	`gulp build`.
+//	`gulp build --production`.
+//
+//	`gulp compile:template`
+//	`gulp compile:styles`
 //	`gulp optimize:images`
-//	`gulp build:javascript`
+//	`gulp lint:javascript`
+//	`gulp bundle:javascript`
 //
 // --------------------------------
 
@@ -20,6 +28,7 @@ var gulp = require("gulp"),
 	source = require("vinyl-source-stream"),
 	browserSync = require("browser-sync"),
 	reload = browserSync.reload,
+	stylish = require("jshint-stylish"),
 	autoprefixer = require("autoprefixer-stylus"),
 	jeet = require("jeet"),
 	poststylus = require("poststylus"),
@@ -29,73 +38,98 @@ var gulp = require("gulp"),
 		lazy: false,
 		camelize: true
 	}),
-	paths = {
+	config = {
+		production: !!plugins.util.env.production,
 		dev: "src/",
 		dest: "assets/",
 		bower: "bower_components/"
 	};
 
 // --------------------------------
-// Task: compile:html
+// Tasks Config
 // --------------------------------
 
-gulp.task("compile:html", function(){
-	gulp.src(paths.dev + "views/pages/**/*.html")
-	.pipe(plugins.plumber())
-	.pipe(plugins.nunjucksHtml({
-		searchPaths: [paths.dev + "views/"]
-	}))
-	.pipe(plugins.minifyHtml())
-	.pipe(gulp.dest("./"))
-	.pipe(plugins.notify({ message: "Successfully compiled templates", onLast: true }))
-});
+var tasks = {
+
+	compileTemplate: function() {
+		return gulp.src(config.dev + "views/pages/**/*.html")
+		.pipe(plugins.nunjucksHtml({
+			searchPaths: [config.dev + "views/"],
+			autoescape: true
+		}))
+		.pipe(config.production ? plugins.minifyHtml() : plugins.util.noop())
+		.pipe(gulp.dest("./"));
+	},
+
+	compileStyles: function() {
+		return gulp.src(config.dev + "styles/*.styl")
+		.pipe(plugins.plumber())
+		.pipe(plugins.stylint())
+		.pipe(config.production ? plugins.sourcemaps.init() : plugins.util.noop())
+		.pipe(plugins.stylus({
+			use: [poststylus(rucksack), autoprefixer(), jeet(), rupture()],
+			compress: config.production ? true : false
+		}))
+		.pipe(config.production ? plugins.sourcemaps.write(".") : plugins.util.noop())
+		.pipe(gulp.dest(config.dest + "css/"));
+	},
+
+	lintCSS: function() {
+		return gulp.src(config.dist + "css/*.css")
+		.pipe(plugins.csslint(".csslintrc"))
+		.pipe(plugins.csslint.reporter());
+	},
+
+	bundleJavascript: function() {
+
+		var bundler = browserify(config.dev + "scripts/main", {
+			debug: true
+		});
+
+		var rebundle = function() {
+			return bundler.bundle()
+			.pipe(plugins.plumber())
+			.pipe(source("build.js"))
+			.pipe(plugins.streamify(config.production ? plugins.uglify() : plugins.util.noop()))
+			.pipe(gulp.dest(config.dest + "javascript/"));
+		};
+		
+		bundler.on("update", rebundle);
+
+		return rebundle();
+	},
+
+	lintJavascript: function() {
+		return gulp.src([
+			"gulpfile.js",
+			config.dev + "scripts/main.js",
+			config.dev + "scripts/**/*.js"
+		]).pipe(plugins.jshint())
+		.pipe(plugins.jshint.reporter(stylish));
+	},
+
+	optimizeImages: function() {
+		return gulp.src(config.dev + "images/**/*.{png,jpg,gif}")
+		.pipe(plugins.plumber())
+		.pipe(plugins.imagemin({
+			optimizationLevel: config.production ? 7 : 1,
+			progressive: true,
+			multipass: true
+		}))
+		.pipe(gulp.dest(config.dest + "images/"));
+	}
+};
 
 // --------------------------------
-// Task: compile:css
+// Custom Tasks
 // --------------------------------
 
-gulp.task("compile:css", function(){
-	gulp.src(paths.dev + "styles/*.styl")
-	.pipe(plugins.plumber())
-	.pipe(plugins.sourcemaps.init())
-	.pipe(plugins.stylus({
-		use: [poststylus(rucksack), autoprefixer(), jeet(), rupture()],
-		compress: true
-	}))
-	.pipe(plugins.sourcemaps.write("."))
-	.pipe(gulp.dest(paths.dest + "css/"))
-	.pipe(plugins.notify({ message: "Successfully compiled styles", onLast: true }))
-});
-
-// --------------------------------
-// Task: require:javascript
-// --------------------------------
-
-gulp.task("build:javascript", function(){
-	return browserify({ entries: ["src/scripts/main"], debug: true })
-	.bundle()
-	.pipe(plugins.plumber())
-	.pipe(source("build.js"))
-	.pipe(plugins.streamify(plugins.uglify()))
-	.pipe(gulp.dest(paths.dest + "javascript/"))
-	.pipe(plugins.notify({ message: "Successfully generated package", onLast: true }))
-});
-
-// --------------------------------
-// Task: optimize:images
-// --------------------------------
-
-gulp.task("optimize:images", function(){
-	gulp.src(paths.dev + "images/**/*.{png,jpg,gif}")
-	.pipe(plugins.plumber())
-	.pipe(plugins.imagemin({
-		optimizationLevel: 7,
-		progressive: true,
-		multipass: true
-	}))
-	.pipe(gulp.dest(paths.dest + "images/"))
-	.pipe(plugins.notify({ message: "Successfully optimized images", onLast: true }))
-});
+gulp.task("compile:template", tasks.compileTemplate);
+gulp.task("compile:styles", tasks.compileStyles);
+gulp.task("lint:css", tasks.lintCSS);
+gulp.task("bundle:javascript", tasks.bundleJavascript);
+gulp.task("lint:javascript", tasks.lintJavascript);
+gulp.task("optimize:images", tasks.optimizeImages);
 
 // --------------------------------
 // Task: BrowserSync
@@ -104,15 +138,18 @@ gulp.task("optimize:images", function(){
 gulp.task("browser-sync", function(){
 	browserSync({
 		server: "./"
-	})
+	});
 });
 
-// --------------------------------
-// Task: Default
-// --------------------------------
+gulp.task("build:styles", ["compile:styles", "lint:css"]);
+gulp.task("build:javascript", ["lint:javascript", "bundle:javascript"]);
 
-gulp.task("default", ["compile:html","compile:css","build:javascript","optimize:images","browser-sync"], function(){
-	gulp.watch(paths.dev + "views/**/*.html", ["compile:html"]).on("change", reload);
-	gulp.watch(paths.dev + "styles/**/*.styl", ["compile:css"]).on("change", reload);
-	gulp.watch(paths.dev + "scripts/**/*.js", ["build:javascript"]).on("change", reload);
+gulp.task("watch", ["compile:template","build:styles","build:javascript","optimize:images","browser-sync"], function(){
+	gulp.watch(config.dev + "views/**/*.html", ["compile:template"]).on("change", reload);
+	gulp.watch(config.dev + "styles/**/*.styl", ["compile:styles"]).on("change", reload);
+	gulp.watch(config.dev + "scripts/**/*.js", ["lint:javascript", "bundle:javascript"]).on("change", reload);
 });
+
+gulp.task("default", ["watch"]);
+
+gulp.task("build", ["compile:template","build:styles","build:javascript","optimize:images"]);
