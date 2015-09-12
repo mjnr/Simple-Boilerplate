@@ -11,7 +11,9 @@
     "jquery": "$"
   },
   "browserify": {
-    "transform": ["browserify-shim"]
+    "transform": [
+      "browserify-shim"
+    ]
   },
   "devDependencies": {
     "gulp": "~3.9.0",
@@ -35,6 +37,11 @@
     "vinyl-source-stream": "~1.1.0",
     "gulp-uglify": "~1.4.0",
     "gulp-streamify": "~1.0.2",
-    "browserify-shim": "~3.8.10"
+    "browserify-shim": "~3.8.10",
+    "gulp-util": "~3.0.6",
+    "gulp-jshint": "~1.11.2",
+    "jshint-stylish": "~2.0.1",
+    "gulp-stylint": "~2.0.0",
+    "gulp-csslint": "~0.2.0"
   }
 }

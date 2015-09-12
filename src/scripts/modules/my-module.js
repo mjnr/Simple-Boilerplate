@@ -3,7 +3,9 @@
 * combined with Browserify.
 */
 
-var App = App || {};
+var $ = require("jquery"),
+
+	App = App || {};
 
 App.myModule = (function(win, doc, jQuery){
 
@@ -19,7 +21,7 @@ App.myModule = (function(win, doc, jQuery){
 
 	return {
 		init: init
-	}
+	};
 
 })(window, document, $);
 

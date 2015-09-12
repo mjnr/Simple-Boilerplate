@@ -21,26 +21,26 @@
 		<title>{{ title }}</title>
 
 		<!-- [ Includes Head ]-->
-		{% include "../includes/metatags.html" %}
+		{% include "includes/metatags.html" %}
 	
 		<!-- [ Includes Main Styles ]-->
-		{% include "../includes/styles.html" %}
+		{% include "includes/styles.html" %}
 
 	</head>
 
 <body>
 
 	<!-- [ Includes Header ]-->
-	{% include "../includes/header.html" %}
+	{% include "includes/header.html" %}
 
 		<!-- [ Includes Content ]-->
 		{% block content %}{% endblock %}
 
 	<!-- [ Includes Footer ]-->
-	{% include "../includes/footer.html" %}
+	{% include "includes/footer.html" %}
 
 	<!-- [ Includes Main Javascript ]-->
-	{% include "../includes/scripts.html" %}
+	{% include "includes/scripts.html" %}
 
 </body>
 </html>
