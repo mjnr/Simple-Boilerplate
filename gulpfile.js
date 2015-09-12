@@ -109,7 +109,7 @@ var tasks = {
 	},
 
 	optimizeImages: function() {
-		return gulp.src(config.dev + "images/**/*.{png,jpg,gif}")
+		return gulp.src(config.dev + "images/**/*.{png,jpg,gif,ico}")
 		.pipe(plugins.plumber())
 		.pipe(plugins.imagemin({
 			optimizationLevel: config.production ? 7 : 1,
