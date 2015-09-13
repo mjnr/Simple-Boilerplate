@@ -35,8 +35,14 @@ $ cd project
 # Install Gulp and Bower, if you haven't already.
 $ npm install -g gulp bower
 
-# Install all dependencies.
+# Installs all the dependencies.
 $ npm install
+
+# Installs all packages.
+$ bower install
+
+# Start a mini server to view the project and watch their changes on http://localhost:3000/
+$ gulp
 ```
 
 ### Folder Structure
