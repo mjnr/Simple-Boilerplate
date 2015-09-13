@@ -7,6 +7,23 @@
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mjnr/Simple-Boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mjnr/Simple-Boilerplate/issues"
+  },
+  "homepage": "https://github.com/mjnr/Simple-Boilerplate",
+  "keywords": [
+    "boilerplate",
+    "node",
+    "gulp",
+    "frontend",
+    "nunjucks",
+    "stylus",
+    "browserify"
+  ],
   "browserify-shim": {
     "jquery": "$"
   },
