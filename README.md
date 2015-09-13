@@ -8,7 +8,7 @@ A simple frontend boilerplate to build professional web projects easily and quic
 
 #### Automation
 - [Gulp](http://gulpjs.com/) - Task Runner.
-- [Bower](http://bower.io/) - Package Manage.
+- [Bower](http://bower.io/) - Package Manager.
 - [Browsersync](http://www.browsersync.io/) - Watch project changes and updates browsers.
 
 #### HTML
