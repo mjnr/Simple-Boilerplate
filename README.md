@@ -16,9 +16,9 @@ A simple frontend boilerplate to build professional web projects easily and quic
 
 #### CSS
 - [Stylus](http://learnboost.github.io/stylus/) - Preprocessor.
-- [Rucksack](simplaio.github.io/rucksack/) - Postcss Features.
+- [Rucksack](https://simplaio.github.io/rucksack/) - Postcss Features.
 - [Jeet](http://jeet.gs/) - Grid System.
-- [Rupture](https://github.com/jenius/rupture) - Media Queries.
+- [Rupture](http://jenius.github.io/rupture/) - Media Queries.
 
 #### Javascript
 - [Browserify](http://browserify.org/) - Modules.
