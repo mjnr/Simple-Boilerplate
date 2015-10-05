@@ -1,13 +1,11 @@
-/*  
+/*
 * A module using the Revealing Module Pattern
 * combined with Browserify.
 */
 
-var $ = require("jquery"),
+var $ = require("jquery");
 
-	App = App || {};
-
-App.myModule = (function(win, doc, jQuery){
+myModule = (function(win, doc, jQuery){
 
 	"use strict";
 
@@ -25,4 +23,4 @@ App.myModule = (function(win, doc, jQuery){
 
 })(window, document, $);
 
-module.exports = App.myModule;
+module.exports = myModule;
