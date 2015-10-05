@@ -21,7 +21,10 @@ A simple frontend boilerplate to build professional web projects easily and quic
 - [Rupture](http://jenius.github.io/rupture/) - Media Queries.
 
 #### Javascript
-- [Browserify](http://browserify.org/) - Modules.
+- [Browserify](http://browserify.org/) - CommonJS Modules.
+- [Karma](http://karma-runner.github.io/) - Javascript Test Runner.
+- [Jasmine](http://jasmine.github.io/) - Javascript Test Framework.
+- [Istanbul](https://gotwarlost.github.io/istanbul/) - Javascript Code Coverage Framework.
 
 ### Instalation
 
