@@ -3,24 +3,24 @@
 * combined with Browserify.
 */
 
-var $ = require("jquery");
+var $ = require("jquery"),
 
-myModule = (function(win, doc, jQuery){
+	myModule = (function(win, doc, jQuery){
 
-	"use strict";
+		"use strict";
 
-	function init() {
-		bindEvents();
-	}
+		function init() {
+			bindEvents();
+		}
 
-	function bindEvents() {
-		console.log("A module using jQuery!", $);
-	}
+		function bindEvents() {
+			console.log("A module using jQuery!", $);
+		}
 
-	return {
-		init: init
-	};
+		return {
+			init: init
+		};
 
-})(window, document, $);
+	})(window, document, $);
 
 module.exports = myModule;
