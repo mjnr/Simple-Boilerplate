@@ -61,7 +61,7 @@ Basically the development files are in the src folder and compiled files go dire
 │   │   ├── logo.png
 │   ├── javascript
 │   │   ├── build.js
-├── src │
+├── src
 │   ├── images
 │   │   ├── favicon
 │   │   ├── logo.png
@@ -99,11 +99,14 @@ Basically the development files are in the src folder and compiled files go dire
 │   │   │   ├── contact
 │   │   │       ├── index.html
 │   │   │   ├── index.html
+├── tests
+│   ├── module.spec.js
 ├── .csslintrc
 ├── .editorconfig
 ├── .gitignore
 ├── bower.json
 ├── gulpfile.js
+├── karma.conf.js
 ├── contact
 │   ├── index.html
 ├── index.html
