@@ -12,17 +12,17 @@ module.exports = function(config) {
 	 // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
 	 frameworks: ['jasmine', 'browserify'],
 
-    plugins: [
-      require('karma-jasmine'),
-      require('karma-browserify'),
-      require('karma-phantomjs-launcher')
-   ],
+	 plugins: [
+		require('karma-jasmine'),
+		require('karma-browserify'),
+		require('karma-phantomjs-launcher')
+	],
 
 	 // list of files / patterns to load in the browser
-    files: [
-      'tests/**/*.spec.js',
-      'tests/*.spec.js'
-   ],
+	 files: [
+		'tests/**/*.spec.js',
+		'tests/*.spec.js'
+	],
 
 	 // list of files to exclude
 	 exclude: [
@@ -32,7 +32,7 @@ module.exports = function(config) {
 	 // preprocess matching files before serving them to the browser
 	 // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
 	 preprocessors: {
-     'tests/**/*.spec.js': ['browserify'],
+	  'tests/**/*.spec.js': ['browserify'],
 	 },
 
 

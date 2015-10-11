@@ -3,7 +3,7 @@
 * to multiply two numbers.
 */
 
-myOtherModule = (function(){
+var myOtherModule = (function(){
 
 	"use strict";
 

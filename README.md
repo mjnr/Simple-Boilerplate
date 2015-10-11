@@ -24,7 +24,6 @@ A simple frontend boilerplate to build professional web projects easily and quic
 - [Browserify](http://browserify.org/) - CommonJS Modules.
 - [Karma](http://karma-runner.github.io/) - Javascript Test Runner.
 - [Jasmine](http://jasmine.github.io/) - Javascript Test Framework.
-- [Istanbul](https://gotwarlost.github.io/istanbul/) - Javascript Code Coverage Framework.
 
 ### Instalation
 
@@ -62,7 +61,7 @@ Basically the development files are in the src folder and compiled files go dire
 │   │   ├── logo.png
 │   ├── javascript
 │   │   ├── build.js
-├── src │
+├── src
 │   ├── images
 │   │   ├── favicon
 │   │   ├── logo.png
@@ -100,11 +99,14 @@ Basically the development files are in the src folder and compiled files go dire
 │   │   │   ├── contact
 │   │   │       ├── index.html
 │   │   │   ├── index.html
+├── tests
+│   ├── module.spec.js
 ├── .csslintrc
 ├── .editorconfig
 ├── .gitignore
 ├── bower.json
 ├── gulpfile.js
+├── karma.conf.js
 ├── contact
 │   ├── index.html
 ├── index.html
