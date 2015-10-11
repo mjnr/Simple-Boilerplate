@@ -31,7 +31,7 @@ A simple frontend boilerplate to build professional web projects easily and quic
 You will need to install [NodeJS](http://nodejs.org/).
 
 ```sh
-# Clone this repository.
+# Clone the repository.
 $ git clone https://github.com/mjnr/Simple-Boilerplate.git project
 $ cd project
 
