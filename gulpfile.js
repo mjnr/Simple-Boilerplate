@@ -13,7 +13,6 @@
 //
 //	`gulp compile:template`
 //	`gulp compile:styles`
-//	`gulp optimize:images`
 //	`gulp lint:javascript`
 //	`gulp bundle:javascript`
 //
@@ -106,17 +105,6 @@ tasks = {
 			config.dev + "scripts/**/*.js"
 		]).pipe(plugins.jshint())
 		.pipe(plugins.jshint.reporter(stylish));
-	},
-
-	optimizeImages: function() {
-		return gulp.src(config.dev + "images/**/*.{png,jpg,gif,ico}")
-		.pipe(plugins.plumber())
-		.pipe(plugins.imagemin({
-			optimizationLevel: config.production ? 3 : 1,
-			progressive: true,
-			multipass: true
-		}))
-		.pipe(gulp.dest(config.dest + "images/"));
 	}
 };
 
@@ -129,7 +117,6 @@ gulp.task("compile:styles", tasks.compileStyles);
 gulp.task("lint:css", tasks.lintCSS);
 gulp.task("bundle:javascript", tasks.bundleJavascript);
 gulp.task("lint:javascript", tasks.lintJavascript);
-gulp.task("optimize:images", tasks.optimizeImages);
 
 // --------------------------------
 // Task: BrowserSync
@@ -148,7 +135,7 @@ gulp.task("browser-sync", function(){
 gulp.task("build:styles", ["compile:styles", "lint:css"]);
 gulp.task("build:javascript", ["lint:javascript", "bundle:javascript"]);
 
-gulp.task("watch", ["compile:template","build:styles","build:javascript","optimize:images","browser-sync"], function(){
+gulp.task("watch", ["compile:template","build:styles","build:javascript","browser-sync"], function(){
 	gulp.watch(config.dev + "views/**/*.html", ["compile:template"]).on("change", reload);
 	gulp.watch(config.dev + "styles/**/*.styl", ["compile:styles"]).on("change", reload);
 	gulp.watch(config.dev + "scripts/**/*.js", ["lint:javascript", "bundle:javascript"]).on("change", reload);
@@ -156,4 +143,4 @@ gulp.task("watch", ["compile:template","build:styles","build:javascript","optimi
 
 gulp.task("default", ["watch"]);
 
-gulp.task("build", ["compile:template","build:styles","build:javascript","optimize:images"]);
+gulp.task("build", ["compile:template","build:styles","build:javascript"]);
