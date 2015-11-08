@@ -66,6 +66,11 @@ tasks = {
 		.pipe(plugins.stylint())
 		.pipe(config.production ? plugins.sourcemaps.init() : plugins.util.noop())
 		.pipe(plugins.stylus({
+			url: {
+				name: "embedurl",
+				paths: [config.dest + "images"],
+				limit: false
+			},
 			use: [poststylus(rucksack), autoprefixer(), jeet(), rupture()],
 			compress: config.production ? true : false
 		}))
