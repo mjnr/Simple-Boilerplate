@@ -197,12 +197,12 @@ th {
   padding: 0;
 }
 @font-face {
-  font-family: 'Saint Seiya';
-  src: url("../fonts/saint-seiya.eot");
-  src: url("../fonts/saint-seiya.eot?#iefix") format('embedded-opentype'),
-       url("../fonts/saint-seiya.woff") format('woff'),
-       url("../fonts/saint-seiya.ttf") format('truetype'),
-       url("../fonts/saint-seiya.svg") format('svg');
+  font-family: "Saint Seiya";
+  src: url("./assets/fonts/saint-seiya.eot");
+  src: url("./assets/fonts/saint-seiya.eot?#iefix") format('embedded-opentype'),
+       url("./assets/fonts/saint-seiya.woff") format('woff'),
+       url("./assets/fonts/saint-seiya.ttf") format('truetype'),
+       url("./assets/fonts/saint-seiya.svg") format('svg');
   font-style: normal;
   font-weight: normal;
 }
@@ -240,19 +240,8 @@ a:active,
 a:focus {
   color: #9e9e9e;
 }
-strong {
-  color: #000;
-  font-weight: bold;
-}
-.container:after{
-  content: '';
-  display: table;
-  clear: both;
-}
-.container {
-  margin: 0 auto;
-  max-width: 94%;
-  width: 100%;
+img {
+  max-width: 100%;
 }
 .element {
   -webkit-animation: animationExample 1s 4 infinite ease-in-out;
@@ -335,4 +324,14 @@ input[type="range"]{
 }
 input[type="range"]::-moz-focus-outer{
   border: 0;
+}
+.container:after{
+  content: '';
+  display: table;
+  clear: both;
+}
+.container {
+  margin: 0 auto;
+  max-width: 94%;
+  width: 95%;
 }
