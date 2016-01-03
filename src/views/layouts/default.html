@@ -7,6 +7,7 @@
 	{% set title = "Home page" %}
 	{% set description = "Lorem ipsum dolor sit amet, consectetur." %}
 	{% set keywords = "lorem, ipsum, dolor" %}
+	{% set scripts = [] %}
 
 {% endblock %}
 
@@ -19,11 +20,14 @@
 
 		<title>{{ title }} | Simple Boilerplate</title>
 
-		<!-- [ Includes Head ]-->
+		<!-- [ Includes metatags ]-->
 		{% include "includes/metatags.html" %}
 
-		<!-- [ Includes Main Styles ]-->
+		<!-- [ Includes CSS files ]-->
 		{% include "includes/styles.html" %}
+
+		<!-- [ Includes Javascript files ]-->
+		{% include "includes/scripts.html" %}
 
 	</head>
 
@@ -32,14 +36,11 @@
 	<!-- [ Includes Header ]-->
 	{% include "includes/header.html" %}
 
-		<!-- [ Includes Content ]-->
-		{% block content %}{% endblock %}
+	<!-- [ Includes Content ]-->
+	{% block content %}{% endblock %}
 
 	<!-- [ Includes Footer ]-->
 	{% include "includes/footer.html" %}
-
-	<!-- [ Includes Main Javascript ]-->
-	{% include "includes/scripts.html" %}
 
 </body>
 </html>

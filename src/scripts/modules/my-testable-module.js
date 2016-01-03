@@ -1,13 +1,8 @@
-/*
-* A module using the Revealing Module Pattern
-* to multiply two numbers.
-*/
-
-var myOtherModule = (function(){
+var myOtherModule = (function($){
 
 	"use strict";
 
-	function multiply(a,b) {
+	function multiply(a, b) {
 		var result = a * b;
 		return result;
 	}

@@ -40,6 +40,8 @@
     "browser-sync": "~2.9.1",
     "browserify": "~11.0.1",
     "browserify-shim": "~3.8.10",
+    "event-stream": "^3.3.2",
+    "glob": "^6.0.3",
     "gulp": "~3.9.0",
     "gulp-concat": "~2.6.0",
     "gulp-csslint": "~0.2.0",

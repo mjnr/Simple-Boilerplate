@@ -25,6 +25,8 @@
 var gulp = require("gulp"),
 	 browserify = require("browserify"),
 	 source = require("vinyl-source-stream"),
+	 es = require("event-stream"),
+	 glob = require("glob"),
 	 browserSync = require("browser-sync"),
 	 reload = browserSync.reload,
 	 stylish = require("jshint-stylish"),
@@ -39,9 +41,9 @@ var gulp = require("gulp"),
 	 }),
 	 config = {
 		 production: !!plugins.util.env.production,
-		 dev: "src/",
-		 dest: "assets/",
-		 bower: "bower_components/"
+		 dev: "./src/",
+		 dest: "./assets/",
+		 bower: "./bower_components/"
 	 },
 
 // --------------------------------
@@ -84,23 +86,20 @@ tasks = {
 		.pipe(plugins.csslint.reporter());
 	},
 
-	bundleJavascript: function() {
-
-		var bundler = browserify(config.dev + "scripts/main", {
-			debug: true
+	bundleJavascript: function(done) {
+		glob(config.dev + "scripts/*.js", function(err, files){
+			var bundles = files.map(function(file){
+				var bundles = browserify(file, {
+					debug: true
+				}).bundle();
+				return bundles
+				.pipe(plugins.plumber())
+				.pipe(source(file.replace(config.dev + "scripts/", "")))
+				.pipe(plugins.streamify(config.production ? plugins.uglify() : plugins.util.noop()))
+				.pipe(gulp.dest(config.dest	 + "javascript/"));
+			});
+			es.merge(bundles).on("end", done);
 		});
-
-		var rebundle = function() {
-			return bundler.bundle()
-			.pipe(plugins.plumber())
-			.pipe(source("build.js"))
-			.pipe(plugins.streamify(config.production ? plugins.uglify() : plugins.util.noop()))
-			.pipe(gulp.dest(config.dest + "javascript/"));
-		};
-
-		bundler.on("update", rebundle);
-
-		return rebundle();
 	},
 
 	lintJavascript: function() {

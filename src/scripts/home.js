@@ -1,5 +1,5 @@
 /*
-* Main Javascript file.
+* Home Javascript file.
 */
 
 var myModule = require("./modules/my-module");

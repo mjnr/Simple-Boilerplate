@@ -1,5 +1,7 @@
 {% block scripts %}
 
-	<script src="{{ assets }}javascript/build.js"></script>
+	{% for script in scripts %}
+		<script src="{{ assets }}javascript/{{script}}.js" async defer></script>
+	{% endfor %}
 
 {% endblock %}
