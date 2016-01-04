@@ -1,6 +1,6 @@
 {
   "name": "simple-boilerplate",
-  "version": "1.1.9",
+  "version": "1.0.0",
   "description": "A simple boilerplate to create static sites.",
   "author": "Milson Júnior",
   "license": "ISC",
@@ -45,6 +45,7 @@
     "gulp": "~3.9.0",
     "gulp-concat": "~2.6.0",
     "gulp-csslint": "~0.2.0",
+    "gulp-imagemin": "^2.4.0",
     "gulp-jshint": "~1.11.2",
     "gulp-load-plugins": "~1.0.0-rc.1",
     "gulp-minify-html": "~1.0.4",
