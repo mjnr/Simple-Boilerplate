@@ -2,20 +2,25 @@
 * Requires and test a module.
 */
 
-var myTestableModule = require("../src/scripts/modules/my-testable-module.js");
+import { ZodiacSaint, BronzeSaint } from "../src/scripts/modules/my-module"
 
-describe("Function to multiply two numbers", function(){
-   var calculator = myTestableModule;
+describe("Saint Seya", function(){
 
-   it("it should be defined", function(){
-      expect(calculator).toBeDefined()
-   });
+  let saintSeya, saintMu
 
-   it("5 and 2 should return 10", function(){
-      expect(calculator.mult(5,2)).toEqual(10)
-   });
+  beforeEach(() => {
+    saintSeya = new BronzeSaint("Seya", "Pegasus")
+    saintMu = new ZodiacSaint("Mu", "Aries")
+  })
 
-   it("2 and 8 should return 16", function(){
-      expect(calculator.mult(2,8)).toEqual(16)
-   });
-});
+  it("should be defined", () => {
+    expect(ZodiacSaint).toBeDefined()
+    expect(BronzeSaint).toBeDefined()
+  })
+
+  it("should return presentation when calling sayName", () => {
+    expect(saintSeya.sayName()).toEqual("My name is Seya and I am the Bronze Pegasus saint")
+    expect(saintMu.sayName()).toEqual("My name is Mu and I am the Aries saint")
+  })
+
+})

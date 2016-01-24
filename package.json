@@ -29,7 +29,14 @@
   },
   "browserify": {
     "transform": [
-      "browserify-shim"
+      [
+        "babelify",
+        {
+          "presets": [
+            "babel-preset-es2015"
+          ]
+        }
+      ]
     ]
   },
   "scripts": {
@@ -37,6 +44,8 @@
   },
   "devDependencies": {
     "autoprefixer-stylus": "~0.7.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
     "browser-sync": "~2.9.1",
     "browserify": "~11.0.1",
     "browserify-shim": "~3.8.10",

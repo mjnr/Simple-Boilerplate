@@ -1,21 +1,30 @@
-var $ = require("jquery"),
+/*
+* Class sample
+*/
 
-	myModule = (function(win, doc, jQuery){
+class ZodiacSaint {
 
-		"use strict";
+	constructor(name, cloth) {
+		this.name = name
+		this.cloth = cloth
+	}
 
-		function init() {
-			bindEvents();
-		}
+	sayName() {
+		return `My name is ${this.name} and I am the ${this.cloth} saint`
+	}
 
-		function bindEvents() {
-			console.log("A module using jQuery!", $);
-		}
+}
 
-		return {
-			init: init
-		};
+class BronzeSaint extends ZodiacSaint {
 
-	})(window, document, $);
+	constructor(name, cloth) {
+		super(name, `Bronze ${cloth}`)
+	}
 
-module.exports = myModule;
+	sayName() {
+		return super.sayName()
+	}
+
+}
+
+export { ZodiacSaint, BronzeSaint }

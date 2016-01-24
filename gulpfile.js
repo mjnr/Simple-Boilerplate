@@ -27,6 +27,9 @@ var gulp = require("gulp"),
 	 source = require("vinyl-source-stream"),
 	 es = require("event-stream"),
 	 glob = require("glob"),
+	 babelify = require("babelify"),
+	 shim = require("browserify-shim"),
+	 es2015 = require("babel-preset-es2015"),
 	 browserSync = require("browser-sync"),
 	 reload = browserSync.reload,
 	 stylish = require("jshint-stylish"),
@@ -91,7 +94,10 @@ tasks = {
 			var bundles = files.map(function(file){
 				var bundles = browserify(file, {
 					debug: true
-				}).bundle();
+				})
+				.transform(shim)
+				.transform(babelify, {presets: ["es2015"]})
+				.bundle();
 				return bundles
 				.pipe(plugins.plumber())
 				.pipe(source(file.replace(config.dev + "scripts/", "")))

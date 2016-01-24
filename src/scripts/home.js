@@ -2,6 +2,8 @@
 * Home Javascript file.
 */
 
-var myModule = require("./modules/my-module");
+import { ZodiacSaint, BronzeSaint } from "./modules/my-module"
 
-myModule.init(); // A module using jQuery ...
+let saintIkki = new BronzeSaint("Ikki", "Phoenix")
+saintIkki.sayName()
+// My name is Ikki and I am the Bronze Phoenix saint
