@@ -4,30 +4,37 @@
 
 *,
 *:before,
-*:after
-	box-sizing border-box
+*:after {
+	box-sizing: border-box;
+}
 
 html,
-body
-	color colorText
-	fs responsive
+body {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	color: colorText;
+	fs: responsive;
+}
 
 h1,
 h2,
 h3,
 h4,
 h5,
-h6
-	color colorHeading
+h6 {
+	color: colorHeading;
+}
 
-a
-	color colorLink
-	transition color .6s
+a {
+	color: colorLink;
+	transition: color .6s;
 
 	&:hover,
-	&:active,
-	&:focus
-		color lighten(colorLink, 5%)
+	&:active {
+		color: lighten(colorLink, 5%);
+	}
+}
 
-img
-	max-width 100%
+img {
+	max-width: 100%;
+}
