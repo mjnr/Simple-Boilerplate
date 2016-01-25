@@ -214,6 +214,8 @@ th {
 }
 html,
 body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
   color: #777;
   font-size: calc(12px + 9 * ( (100vw - 420px) / 860));
 }

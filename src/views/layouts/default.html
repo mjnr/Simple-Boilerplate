@@ -1,3 +1,4 @@
+{# Variables #}
 {% block variables %}
 
 	{% set host = "http://localhost:3000" %}
@@ -9,6 +10,10 @@
 	{% set scripts = [] %}
 
 {% endblock %}
+
+{# Imports #}
+{% import "macros/forms.html"	as form %}
+{% from "macros/image.html"	import img %}
 
 <!DOCTYPE html><!--[if IE 8]><html class="ie8" lang="pt-br"><![endif]-->
 <!--[if IE 9]><html lang="pt-br" class="ie9"><![endif]-->

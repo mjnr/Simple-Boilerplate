@@ -1,0 +1,18 @@
+{# Image Helper #}
+{% macro img(file, alt, category) %}
+  {% if category %}
+    <img src="/assets/images/{{ category }}/{{ file }}" alt="{{ alt }}">
+  {% else %}
+    <img src="/assets/images/{{ file }}" alt="{{ alt }}">
+  {% endif %}
+{% endmacro %}
+
+{#
+  Example
+  {{ img("sample.png","Image alt") }}
+  {{ img("sample.png","Image alt", "category") }}
+
+  Will compile
+  <img src="/assets/images/sample.png" alt="Image alt">
+  <img src="/assets/images/category/sample.png" alt="Image alt">
+#}
