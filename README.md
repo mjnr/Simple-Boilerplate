@@ -2,7 +2,7 @@
 
 ---
 
-A simple frontend boilerplate to build professional web projects easily and quickly.
+A frontend boilerplate to build professional web projects easily and quickly.
 
 ### Features
 
@@ -22,6 +22,7 @@ A simple frontend boilerplate to build professional web projects easily and quic
 
 #### Javascript
 - [Browserify](http://browserify.org/) - CommonJS Modules.
+- [BabelJS](https://babeljs.io/) - Javascript compiler.
 - [Karma](http://karma-runner.github.io/) - Javascript Test Runner.
 - [Jasmine](http://jasmine.github.io/) - Javascript Test Framework.
 
@@ -87,6 +88,9 @@ Basically the development files are in the src folder and compiled files go dire
 │   │   │   ├── normalize.styl
 │   │   ├── main.styl
 │   ├── views
+|   │   ├── macros
+│   │   │   ├── image.html
+│   │   │   ├── forms.html
 │   │   ├── includes
 │   │   │   ├── footer.html
 │   │   │   ├── header.html
