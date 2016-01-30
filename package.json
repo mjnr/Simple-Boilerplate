@@ -29,13 +29,11 @@
   },
   "browserify": {
     "transform": [
+      "browserify-shim",
       [
         "babelify",
         {
-          "ignore": ["./bower_components/**"],
-          "presets": [
-            "babel-preset-es2015"
-          ]
+          "ignore": ["./bower_components/**"]
         }
       ]
     ]
