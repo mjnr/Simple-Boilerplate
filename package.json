@@ -32,6 +32,7 @@
       [
         "babelify",
         {
+          "ignore": ["./bower_components/**"],
           "presets": [
             "babel-preset-es2015"
           ]

@@ -95,8 +95,6 @@ tasks = {
 				var bundles = browserify(file, {
 					debug: true
 				})
-				.transform(shim)
-				.transform(babelify, {presets: ["es2015"]})
 				.bundle();
 				return bundles
 				.pipe(plugins.plumber())
