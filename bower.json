@@ -20,7 +20,7 @@
     "package.json",
     "src"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "jquery": "~1.11.1"
   }

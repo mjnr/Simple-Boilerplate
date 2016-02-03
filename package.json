@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A simple boilerplate to create static sites.",
   "author": "Milson Júnior",
-  "license": "ISC",
+  "license": "MIT",
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js"
   },
