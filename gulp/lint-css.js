@@ -1,7 +1,7 @@
 "use strict";
 
 import gulp from "gulp";
-import config from "./config"
+import config from "./config";
 import gulpLoadPlugins from "gulp-load-plugins";
 
 let plugins = gulpLoadPlugins({
@@ -13,4 +13,4 @@ export default () => {
 	return gulp.src(`${config.dest}css/*.css`)
 	.pipe(plugins.csslint(".csslintrc"))
 	.pipe(plugins.csslint.reporter());
-}
+};

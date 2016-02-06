@@ -1,16 +1,9 @@
-
-@media screen and (min-width: 1280px){
-  html,
-body{
-    font-size: 21px;
-  }
-}@charset "utf-8";
 /*
 * SIMPLE BOILERPLATE
 * https://github.com/mjnr/Simple-Boilerplate
 * -----------------------------------
 * Author: Milson Júnior
-* URL: https://github.com/mjnr/
+* URL: https://github.com/mjnr
 * -----------------------------------
 * Project Name
 * -----------------------------------
@@ -217,13 +210,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: #777;
-  font-size: calc(12px + 9 * ( (100vw - 420px) / 860));
-}
-@media screen and (max-width: 420px){
-  html,
-body{
-    font-size: 12px;
-  }
 }
 h1,
 h2,
@@ -290,50 +276,50 @@ img {
   opacity: 0.8;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 }
-.form input[type="range"]::-webkit-slider-runnable-track{
+.form input[type="range"]::-webkit-slider-runnable-track {
   -webkit-appearance: none;
   background: #ccc;
   height: 5px;
 }
-.form input[type="range"]::-moz-range-track{
+.form input[type="range"]::-moz-range-track {
   -moz-appearance: none;
   background: #ccc;
   height: 5px;
 }
-.form input[type="range"]::-ms-track{
+.form input[type="range"]::-ms-track {
   background: #ccc;
   height: 5px;
 }
-input[type="range"]{
+input[type="range"] {
   -webkit-appearance: none;
 }
-input[type="range"]::-moz-focus-outer{
+input[type="range"]::-moz-focus-outer {
   border: 0;
 }
-.form input[type="range"]::-webkit-slider-thumb{
+.form input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   background: #ddd;
   height: 10px;
   width: 20px;
 }
-.form input[type="range"]::-moz-range-thumb{
+.form input[type="range"]::-moz-range-thumb {
   -moz-appearance: none;
   background: #ddd;
   height: 10px;
   width: 20px;
 }
-.form input[type="range"]::-ms-thumb{
+.form input[type="range"]::-ms-thumb {
   background: #ddd;
   height: 10px;
   width: 20px;
 }
-input[type="range"]{
+input[type="range"] {
   -webkit-appearance: none;
 }
-input[type="range"]::-moz-focus-outer{
+input[type="range"]::-moz-focus-outer {
   border: 0;
 }
-.container:after{
+.container:after {
   content: '';
   display: table;
   clear: both;

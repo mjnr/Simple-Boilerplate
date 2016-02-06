@@ -1,7 +1,6 @@
 "use strict";
 
 import gulpLoadPlugins from "gulp-load-plugins";
-
 let plugins = gulpLoadPlugins({
 	lazy: false,
 	camelize: true
