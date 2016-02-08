@@ -12,7 +12,17 @@ html,
 body {
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
-	color: colorText;
+	color: content-color;
+	fs: small-font-size;
+
+	+above('medium') {
+		fs: medium-font-size;
+	}
+
+	+above('large') {
+		fs: base-font-size;
+	}
+
 }
 
 h1,
@@ -21,17 +31,11 @@ h3,
 h4,
 h5,
 h6 {
-	color: colorHeading;
+	color: heading-color;
 }
 
 a {
-	color: colorLink;
-	transition: color .6s;
-
-	&:hover,
-	&:active {
-		color: lighten(colorLink, 5%);
-	}
+	color: link-color;
 }
 
 img {

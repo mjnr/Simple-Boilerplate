@@ -17,8 +17,26 @@
 {% block content %}
 
 	<main role="main" class="content container">
-		<h1>It works!</h1>
-		{{ img("logo.png", "Logo") }}
+		<h1 class="primary-title">It works!</h1>
+		<h2 class="secondary-title">UI component sample</h2>
+		<article class="content-block">
+			<div class="banner">
+				<img src="http://fakeimg.pl/350x200/?text=Banner">
+			</div>
+			<h2 class="title">
+				Title
+			</h2>
+			<div class="description">
+				<p>
+					<strong>Description</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				</p>
+			</div>
+			<a class='button -darker' href="#">
+				button
+			</a>
+		</article>
+
 	</main>
 
 {% endblock %}

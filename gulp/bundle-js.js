@@ -30,5 +30,5 @@ export default done => {
 			.pipe(reload({stream: true}));
     });
     es.merge(bundles).on("end", done);
-  });
+  })
 };

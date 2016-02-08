@@ -1,0 +1,23 @@
+// -------------------------
+// Main - Layout
+// -------------------------
+
+.content {
+  & {
+    clear fix
+  }
+
+  > .primary-title {
+    margin: convertpxtorem(double-space) 0;
+    pxtorem(fs, 40px);
+  }
+
+  > .secondary-title {
+    margin: convertpxtorem((double-space/1.8)) 0;
+    pxtorem(fs, 32px);
+  }
+
+  > .content-block {
+    max-width: 350px;
+  }
+}

@@ -2,23 +2,23 @@
 // Functions
 // -------------------------
 
-// Convert px to rem
+// Convert px to REM
 // -------------------------
 pxtorem(prop, value) {
 	{prop}: unit(value, px);
-	{prop}: unit((value / baseFontSize), rem);
+	{prop}: unit((value / base-font-size), rem);
 }
 
 convertpxtorem(value) {
-	return unit((value / baseFontSize), rem);
+	return unit((value / base-font-size), rem);
 }
 
-// Convert px to em
+// Convert px to EM
 // -------------------------
 pxtoem(prop, value) {
-	{prop}: unit((value / baseFontSize), em);
+	{prop}: unit((value / base-font-size), em);
 }
 
 convertpxtoem(value) {
-	return unit((value / baseFontSize), em);
+	return unit((value / base-font-size), em);
 }
