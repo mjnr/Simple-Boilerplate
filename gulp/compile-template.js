@@ -1,9 +1,13 @@
+// --------------------------------
+// Task Compile Template
+// --------------------------------
+
 "use strict";
 
-import gulp from "gulp";
-import config from "./config";
+import gulp            from "gulp";
+import config          from "./config";
 import gulpLoadPlugins from "gulp-load-plugins";
-import browserSync from "browser-sync";
+import browserSync     from "browser-sync";
 
 let reload = browserSync.reload;
 

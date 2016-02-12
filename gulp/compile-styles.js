@@ -1,14 +1,19 @@
+// --------------------------------
+// Task Compile Styles
+// --------------------------------
+
 "use strict";
 
-import gulp from "gulp";
-import config from "./config";
+import gulp            from "gulp";
+import config          from "./config";
 import gulpLoadPlugins from "gulp-load-plugins";
-import autoprefixer from "autoprefixer-stylus";
-import jeet from "jeet";
-import poststylus from "poststylus";
-import rucksack from "rucksack-css";
-import rupture from "rupture";
-import browserSync from "browser-sync";
+import autoprefixer    from "autoprefixer-stylus";
+import jeet            from "jeet";
+import poststylus      from "poststylus";
+import rucksack        from "rucksack-css";
+import rupture         from "rupture";
+import browserSync     from "browser-sync";
+
 let reload = browserSync.reload;
 let plugins = gulpLoadPlugins({
 	lazy: false,

@@ -1,7 +1,11 @@
+// --------------------------------
+// Task Lint CSS
+// --------------------------------
+
 "use strict";
 
-import gulp from "gulp";
-import config from "./config";
+import gulp            from "gulp";
+import config          from "./config";
 import gulpLoadPlugins from "gulp-load-plugins";
 
 let plugins = gulpLoadPlugins({

@@ -1,13 +1,18 @@
+// --------------------------------
+// Task Bundle Javascript
+// --------------------------------
+
 "use strict";
 
-import gulp from "gulp";
-import config from "./config";
+import gulp 					 from "gulp";
+import config 				 from "./config";
 import gulpLoadPlugins from "gulp-load-plugins";
-import browserify from "browserify";
-import source from "vinyl-source-stream";
-import es from "event-stream";
-import glob from "glob";
-import browserSync from "browser-sync";
+import browserify      from "browserify";
+import source          from "vinyl-source-stream";
+import es              from "event-stream";
+import glob            from "glob";
+import browserSync     from "browser-sync";
+
 let reload = browserSync.reload;
 let plugins = gulpLoadPlugins({
 	lazy: false,

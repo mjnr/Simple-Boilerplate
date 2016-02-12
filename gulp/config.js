@@ -1,3 +1,7 @@
+// --------------------------------
+// Config File
+// --------------------------------
+
 "use strict";
 
 import gulpLoadPlugins from "gulp-load-plugins";
