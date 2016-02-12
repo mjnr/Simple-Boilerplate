@@ -54,7 +54,7 @@ The view structure is based on Nunjucks Template Engine features and it generate
 
 #### Default Layout
 Its possible [extends](https://mozilla.github.io/nunjucks/templating.html#extends) the default [layout]("src/views/layouts/default.html") to create pages.
-```nunjucks
+```html
 {# Variables #}
 {% block variables %}
 
@@ -109,7 +109,7 @@ Its possible [extends](https://mozilla.github.io/nunjucks/templating.html#extend
 ```
 
 #### Page
-```nunjucks
+```html
 {% extends "layouts/default.html" %}
 
 {% block variables %}
