@@ -1,10 +1,8 @@
-![Simple Boilerplate](/assets/images/logo.png)
-
----
+# ![Simple Boilerplate](/assets/images/logo.png)
 
 A frontend boilerplate to build professional web projects easily and quickly.
 
-### Features
+## Features
 
 #### Automation
 - [Gulp](http://gulpjs.com/) - Task Runner.
@@ -15,7 +13,7 @@ A frontend boilerplate to build professional web projects easily and quickly.
 - [Nunjucks](https://mozilla.github.io/nunjucks/) - Template Engine.
 
 #### CSS
-- [Stylus](http://learnboost.github.io/stylus/) - Preprocessor.
+- [Stylus](http://stylus-lang.com/) - Preprocessor.
 - [Rucksack](https://simplaio.github.io/rucksack/) - Postcss Features.
 - [Jeet](http://jeet.gs/) - Grid System.
 - [Rupture](http://jenius.github.io/rupture/) - Media Queries.
@@ -26,7 +24,7 @@ A frontend boilerplate to build professional web projects easily and quickly.
 - [Karma](http://karma-runner.github.io/) - Javascript Test Runner.
 - [Jasmine](http://jasmine.github.io/) - Javascript Test Framework.
 
-### Instalation
+## Instalation
 
 You will need to install [NodeJS](http://nodejs.org/).
 
@@ -48,76 +46,204 @@ $ bower install
 $ gulp
 ```
 
-### Folder Structure
+## Folder Structure
+Basically the development files are in the **src** folder and compiled files go directly to **assets**.
 
-Basically the development files are in the src folder and compiled files go directly to assets.
+## View Structure
+The view structure is based on Nunjucks Template Engine features and it generate .html files. See more [here](https://mozilla.github.io/nunjucks/templating.html).
 
-```sh
-├── assets
-│   ├── css
-│   │   ├── main.css
-│   ├── fonts
-│   ├── images
-│   │   ├── favicon
-│   │   ├── logo.png
-│   ├── javascript
-│   │   ├── build.js
-├── src
-│   ├── images
-│   │   ├── favicon
-│   │   ├── logo.png
-│   ├── scripts
-│   │   ├── modules
-│   │      ├── my-module.js
-│   │   ├── main.js
-│   ├── styles
-│   │   ├── base
-│   │   │   ├── base.styl
-│   │   │   ├── fonts.styl
-│   │   ├── config
-│   │   │   ├── functions.styl
-│   │   │   ├── variables.styl
-│   │   ├── layout
-│   │   │   ├── l-footer.styl
-│   │   │   ├── l-header.styl
-│   │   ├── modules
-│   │   │   ├── animations.styl
-│   │   │   ├── container.styl
-│   │   │   ├── forms.styl
-│   │   ├── vendor
-│   │   │   ├── normalize.styl
-│   │   ├── main.styl
-│   ├── views
-|   │   ├── macros
-│   │   │   ├── image.html
-│   │   │   ├── forms.html
-│   │   ├── includes
-│   │   │   ├── footer.html
-│   │   │   ├── header.html
-│   │   │   ├── metatags.html
-│   │   │   ├── scripts.html
-│   │   │   ├── styles.html
-│   │   ├── layouts
-│   │   │   ├── default.html
-│   │   ├── pages
-│   │   │   ├── contact
-│   │   │       ├── index.html
-│   │   │   ├── index.html
-├── tests
-│   ├── module.spec.js
-├── .csslintrc
-├── .editorconfig
-├── .gitignore
-├── bower.json
-├── gulpfile.js
-├── karma.conf.js
-├── contact
-│   ├── index.html
-├── index.html
-├── package.json
-├── README.md
+#### Default Layout
+Its possible [extends](https://mozilla.github.io/nunjucks/templating.html#extends) the default [layout]("src/views/layouts/default.html") to create pages.
+```nunjucks
+{# Variables #}
+{% block variables %}
+
+	{% set host = "http://localhost:3000" %}
+	{% set page = "" %}
+	{% set assets = "/assets/" %}
+	{% set title = "Home page" %}
+	{% set description = "Lorem ipsum dolor sit amet, consectetur." %}
+	{% set keywords = "lorem, ipsum, dolor" %}
+	{% set scripts = [] %}
+
+{% endblock %}
+
+{# Imports #}
+{% import "macros/forms.html"	as form %}
+{% from "macros/image.html"	import img %}
+
+<!DOCTYPE html><!--[if IE 8]><html class="ie8" lang="pt-br"><![endif]-->
+<!--[if IE 9]><html lang="pt-br" class="ie9"><![endif]-->
+<!--[if !IE]><!-->
+<html lang="pt-br"><!--<![endif]-->
+
+	<head>
+
+		<title>{{ title }} | Simple Boilerplate</title>
+
+		<!-- [ Includes metatags ]-->
+		{% include "includes/metatags.html" %}
+
+		<!-- [ Includes CSS files ]-->
+		{% include "includes/styles.html" %}
+
+		<!-- [ Includes Javascript files ]-->
+		{% include "includes/scripts.html" %}
+
+	</head>
+
+<body>
+
+	<!-- [ Includes Header ]-->
+	{% include "includes/header.html" %}
+
+	<!-- [ Includes Content ]-->
+	{% block content %}{% endblock %}
+
+	<!-- [ Includes Footer ]-->
+	{% include "includes/footer.html" %}
+
+</body>
+</html>
+
 ```
-### Available Tasks
+
+#### Page
+```nunjucks
+{% extends "layouts/default.html" %}
+
+{% block variables %}
+
+	{{ super() }}
+
+	{% set title = "Home Page" %}
+	{% set description = "Lorem ipsum dolor sit amet, consectetur." %}
+	{% set keywords = "lorem, ipsum, dolor" %}
+
+	{%
+		set scripts = ["home"]
+	%}
+
+{% endblock %}
+
+{% block content %}
+
+	<main role="main" class="content container">
+    <!-- content -->
+	</main>
+
+{% endblock %}
+```
+
+## Stylesheet Structure
+The style structure is a blend of several CSS architecture concepts, with emphasis on [SMACSS](https://smacss.com/book) and [RSCSS](http://rscss.io/) . Currently, it is divided into:
+
+```stylus
+// Config
+// -------------------------
+@require 'config/*'
+
+// Vendors
+// -------------------------
+@require 'vendors/*'
+
+// Base
+// -------------------------
+@require 'base/*'
+
+// Components
+// -------------------------
+@require 'components/*'
+
+// Layouts
+// -------------------------
+@require 'jeet'
+@require 'layouts/*'
+```
+
+#### Config
+- **[variables](src/styles/config/variables.styl)**<br/>
+  File to define project variables, alias and breakpoints. See more [here](http://stylus-lang.com/docs/variables.html).
+
+- **[functions](src/styles/config/functions.styl)**<br/>
+  Stylus functions. See more [here](http://stylus-lang.com/docs/functions.html).
+
+---
+
+#### Vendors
+- **[normalize](src/styles/vendors/normalize.styl)**
+
+---
+
+#### Base
+- **[base](src/styles/base/base.styl)**<br/>
+  Base style rules. See more [here](https://smacss.com/book/type-base).
+
+- **[fonts](src/styles/base/fonts.styl)**<br/>
+  File to define project @font-face. See more [here](http://simplaio.github.io/rucksack/docs/#font-src).
+
+- **[helpers](src/styles/base/helpers.styl)**<br/>
+  Classes used to override values ​​when necessary. See more
+  [here](http://rscss.io/helpers.html)
+
+---
+
+#### Components
+- **[button](src/styles/components/button.styl)**
+- **[navigation](src/styles/components/navigation.styl)**
+- **[content-block](src/styles/components/content-block.styl)**
+
+Inspired by [RSCSS Components](http://rscss.io/components.html)
+
+## Javascript structure
+
+It is currently possible to create multiple bundles with Browserify and write modules using ES6 features.
+
+#### Module sample
+```javascript
+/*
+* Class sample
+*/
+
+class ZodiacSaint {
+
+	constructor(name, cloth) {
+		this._name = name;
+		this._cloth = cloth;
+	}
+
+	sayName() {
+		return `My name is ${this._name} and I am the ${this._cloth} saint`;
+	}
+
+}
+
+class BronzeSaint extends ZodiacSaint {
+
+	constructor(name, cloth) {
+		super(name, `Bronze ${cloth}`);
+	}
+
+	sayName() {
+		return super.sayName();
+	}
+
+}
+
+export { ZodiacSaint, BronzeSaint }
+```
+
+#### Bundle sample
+```javascript
+import { ZodiacSaint, BronzeSaint } from "./modules/my-module";
+
+let saintIkki = new BronzeSaint("Ikki", "Phoenix");
+saintIkki.sayName();
+// My name is Ikki and I am the Bronze Phoenix saint
+
+```
+
+## Available Tasks
 - `gulp` or `gulp watch` Start watch for changes and server with Browsersync.
 - `gulp build` Run all development tasks
 - `gulp build --production` Run all development tasks and minify all files for production.
