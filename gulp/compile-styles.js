@@ -23,7 +23,6 @@ let plugins = gulpLoadPlugins({
 export default () => {
   return gulp.src(`${config.dev}styles/*.styl`)
   .pipe(plugins.plumber())
-  .pipe(plugins.stylint())
   .pipe(config.production ? plugins.sourcemaps.init() : plugins.util.noop())
   .pipe(plugins.stylus({
     url: {

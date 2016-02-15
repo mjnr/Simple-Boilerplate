@@ -226,11 +226,11 @@ img {
 }
 @font-face {
   font-family: 'Saint Seiya';
-  src: url("./assets/fonts/saint-seiya.eot");
-  src: url("./assets/fonts/saint-seiya.eot?#iefix") format('embedded-opentype'),
-       url("./assets/fonts/saint-seiya.woff") format('woff'),
-       url("./assets/fonts/saint-seiya.ttf") format('truetype'),
-       url("./assets/fonts/saint-seiya.svg") format('svg');
+  src: url(""./assets/fonts/saint-seiya".eot");
+  src: url(""./assets/fonts/saint-seiya".eot?#iefix") format('embedded-opentype'),
+       url(""./assets/fonts/saint-seiya".woff") format('woff'),
+       url(""./assets/fonts/saint-seiya".ttf") format('truetype'),
+       url(""./assets/fonts/saint-seiya".svg") format('svg');
   font-style: normal;
   font-weight: normal;
 }
@@ -268,12 +268,11 @@ img {
 }
 .content-block {
   background-color: lightColor;
-  border-radius: 2px;
   border: solid 1px #ccc;
-  padding: 10px;
-  padding: 1rem;
   font-size: 16px;
   font-size: 1.6rem;
+  padding: 10px;
+  padding: 1rem;
 }
 .content-block > .banner {
   text-align: center;
@@ -284,7 +283,7 @@ img {
   font-size: 2.5rem;
 }
 .content-block > .description > p:first-of-type {
-  margin-top: 0;
+  margin: 0 0 10px;
 }
 .content-block > .button {
   float: left;

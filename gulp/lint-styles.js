@@ -1,5 +1,5 @@
 // --------------------------------
-// Task Lint CSS
+// Task Lint JS
 // --------------------------------
 
 "use strict";
@@ -14,7 +14,14 @@ let plugins = gulpLoadPlugins({
 });
 
 export default () => {
-	return gulp.src(`${config.dest}css/*.css`)
-	.pipe(plugins.csslint(".csslintrc"))
-	.pipe(plugins.csslint.reporter());
+  return gulp.src(
+		[
+			`${config.dev}styles/**/*.styl`,
+			`!${config.dev}styles/main.styl`,
+			`!${config.dev}styles/vendors/*.styl`
+		]
+	)
+	.pipe(plugins.stylint({
+		config: ".stylintrc"
+	}))
 };

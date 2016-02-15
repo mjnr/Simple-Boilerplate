@@ -4,8 +4,8 @@
 
 "use strict";
 
-import gulp 					 from "gulp";
-import config 				 from "./config";
+import gulp            from "gulp";
+import config          from "./config";
 import gulpLoadPlugins from "gulp-load-plugins";
 import browserify      from "browserify";
 import source          from "vinyl-source-stream";

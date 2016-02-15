@@ -4,7 +4,7 @@
 
 "use strict";
 
-import gulp 			 from "gulp";
+import gulp        from "gulp";
 import browserSync from "browser-sync";
 
 let reload = browserSync.reload;

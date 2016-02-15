@@ -247,10 +247,11 @@ saintIkki.sayName();
 - `gulp` or `gulp watch` Start watch for changes and server with Browsersync.
 - `gulp build` Run all development tasks
 - `gulp build --production` Run all development tasks and minify all files for production.
-- `gulp build:javascript` Create and lint Javascript bundle.
-- `gulp build:styles` Create and lint css files.
+- `gulp optimize:images` Optimize all images.
 - `gulp compile:template` Compile Nunjucks template.
 - `gulp compile:styles` Compile Stylus.
-- `gulp optimize:images` Optimize all images.
-- `gulp lint:javascript` Lint Javascript files.
+- `gulp lint:styles` Lint Stylus files.
+- `gulp build:styles` Compile and lint Stylus files.
 - `gulp bundle:javascript` Create Javascript bundle.
+- `gulp lint:javascript` Lint Javascript files.
+- `gulp build:javascript` Create and lint Javascript bundle.

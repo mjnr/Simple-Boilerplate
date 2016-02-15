@@ -7,16 +7,21 @@
 //	Available tasks:
 //
 //	`gulp` or `gulp watch`.
-//	`gulp build:javascript`.
-//	`gulp build:styles`.
 //
 //	`gulp build`.
 //	`gulp build --production`.
 //
 //	`gulp compile:template`
+//
+//	`gulp optimize:images`
+//
 //	`gulp compile:styles`
-//	`gulp lint:javascript`
+//	`gulp lint:styles`.
+//	`gulp build:styles`.
+//
 //	`gulp bundle:javascript`
+//	`gulp lint:javascript`
+//	`gulp build:javascript`.
 //
 // --------------------------------
 
@@ -30,7 +35,7 @@ import watch            from "./gulp/watch";
 import optimizeImages   from "./gulp/optimize-images";
 import compileTemplate  from "./gulp/compile-template";
 import compileStyles    from "./gulp/compile-styles";
-import lintCSS          from "./gulp/lint-css";
+import lintStyles       from "./gulp/lint-styles";
 import bundleJavascript from "./gulp/bundle-js";
 import lintJS           from "./gulp/lint-js";
 
@@ -59,9 +64,13 @@ gulp.task("compile:template", compileTemplate);
 // --------------------------------
 gulp.task("compile:styles", compileStyles);
 
-// Task lint:css
+// Task lint:styles
 // --------------------------------
-gulp.task("lint:css", lintCSS);
+gulp.task("lint:styles", lintStyles);
+
+// Task build:styles
+// --------------------------------
+gulp.task("build:styles", ["lint:styles", "compile:styles"]);
 
 // Task bundle:javascript
 // --------------------------------
@@ -70,10 +79,6 @@ gulp.task("bundle:javascript", bundleJavascript);
 // Task lint:javascript
 // --------------------------------
 gulp.task("lint:javascript", lintJS);
-
-// Task build:styles
-// --------------------------------
-gulp.task("build:styles", ["compile:styles", "lint:css"]);
 
 // Task build:javascript
 // --------------------------------

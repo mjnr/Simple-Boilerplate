@@ -3,31 +3,30 @@
 // -------------------------
 
 .content-block {
-  & {
-    background-color: quaternary-color;
-    border-radius: 2px;
-    border: solid 1px primary-color;
-    clear: fix;
-    pxtorem(padding, base-space);
-    pxtorem(fs, 16px);
-  }
+	& {
+		background-color: quaternary-color;
+		border: solid 1px primary-color;
+		clear: fix;
+		pxtorem(fs, 16px);
+		pxtorem(padding, base-space);
+	}
 
-  > .banner {
-    text-align: center;
-  }
+	> .banner {
+		text-align: center;
+	}
 
-  > .title {
-    margin: convertpxtorem(base-space) 0;
-    pxtorem(fs, 25px);
-  }
+	> .title {
+		margin: convertpxtorem(base-space) 0;
+		pxtorem(fs, 25px);
+	}
 
-  > .description > p {
-    &:first-of-type {
-      margin-top: 0;
-    }
-  }
+	> .description > p {
+		&:first-of-type {
+			margin: 0 0 base-space;
+		}
+	}
 
-  > .button {
-    float: left;
-  }
+	> .button {
+		float: left;
+	}
 }
