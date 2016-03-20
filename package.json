@@ -55,6 +55,7 @@
     "event-stream": "^3.3.2",
     "glob": "^6.0.3",
     "gulp": "~3.9.0",
+    "gulp-batch": "^1.0.5",
     "gulp-concat": "~2.6.0",
     "gulp-eslint": "^1.1.1",
     "gulp-imagemin": "^2.4.0",

@@ -6,9 +6,21 @@
 
 import gulp   from "gulp";
 import config from "./config";
+import watch  from "gulp-watch";
+import batch  from "gulp-batch";
 
 export default () => {
-	gulp.watch(`${config.dev}views/**/*.html`, ["compile:template"]);
-	gulp.watch(`${config.dev}styles/**/*.styl`, ["compile:styles"]);
-	gulp.watch(`${config.dev}scripts/**/*.js`, ["lint:javascript", "bundle:javascript"]);
+
+	const watchers = {
+		"views/**/*.html" : "compile:template",
+		"styles/**/*.styl" : "compile:styles",
+		"scripts/**/*.js" : ["lint:javascript", "bundle:javascript"],
+		"images/**/*.{png,jpg,gif,svg}" : "optimize:images"
+	};
+
+	for (let watcher in watchers) {
+		watch(`${config.dev}${watcher}`, batch((event, done) => {
+			gulp.start(watchers[watcher], done);
+		}));
+	}
 };
