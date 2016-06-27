@@ -12,7 +12,14 @@
     "url": "https://github.com/mjnr/Simple-Boilerplate/issues"
   },
   "homepage": "https://github.com/mjnr/Simple-Boilerplate",
-  "keywords": [],
+  "keywords": [
+  	"boilerplate",
+  	"node",
+  	"frontend",
+  	"jade",
+  	"stylus",
+  	"webpack"
+  ],
   "devDependencies": {
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
