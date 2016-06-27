@@ -28,11 +28,11 @@
   },
   "scripts": {
     "serve": "browser-sync start --server 'dist' --files 'dist/**/*.html', 'dist/assets/css/*.css', 'dist/assets/js/*.js'",
-    "build:scripts": "webpack",
+    "build:scripts": "webpack -p",
     "watch:scripts": "npm run build:scripts -- -w",
-    "build:styles": "stylus -u poststylus --with '[require(\"rucksack-css\")()]' -u rupture -m dev/styles/ -o dist/assets/css/",
+    "build:styles": "stylus -c -u poststylus --with '[require(\"rucksack-css\")()]' -u rupture -m dev/styles/ -o dist/assets/css/",
     "watch:styles": "npm run build:styles -- -w",
-    "build:views": "pug dev/views/pages -Po dist",
+    "build:views": "pug dev/views/pages -o dist",
     "watch:views": "npm run build:views -- -w",
     "watch:all": "concurrently --kill-others 'npm run watch:scripts' 'npm run watch:styles' 'npm run watch:views'",
     "start": "concurrently --kill-others 'npm run serve' 'npm run watch:all'"
