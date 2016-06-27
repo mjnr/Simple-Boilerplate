@@ -13,12 +13,12 @@
   },
   "homepage": "https://github.com/mjnr/Simple-Boilerplate",
   "keywords": [
-  	"boilerplate",
-  	"node",
-  	"frontend",
-  	"jade",
-  	"stylus",
-  	"webpack"
+    "boilerplate",
+    "node",
+    "frontend",
+    "jade",
+    "stylus",
+    "webpack"
   ],
   "devDependencies": {
     "babel-core": "^6.10.4",
@@ -26,6 +26,7 @@
     "babel-preset-es2015": "^6.9.0",
     "browser-sync": "^2.13.0",
     "concurrently": "^2.1.0",
+    "imagemin-cli": "^3.0.0",
     "poststylus": "^0.2.3",
     "pug-cli": "^1.0.0-alpha6",
     "rucksack-css": "^0.8.6",
@@ -35,6 +36,7 @@
   },
   "scripts": {
     "serve": "browser-sync start --server 'dist' --files 'dist/**/*.html', 'dist/assets/css/*.css', 'dist/assets/js/*.js'",
+    "optimize:images": "imagemin dev/images/*.{gif,jpg,png,svg} --out-dir=dist/assets/images",
     "build:scripts": "webpack -p",
     "watch:scripts": "npm run build:scripts -- -w",
     "build:styles": "stylus -c -u poststylus --with '[require(\"rucksack-css\")()]' -u rupture -m dev/styles/ -o dist/assets/css/",
