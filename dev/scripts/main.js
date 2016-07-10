@@ -1,4 +1,3 @@
-import $ from 'jquery';
-import moduleOne from './modules/module-one.js';
+import myModule from './modules/my-module.js';
 
-console.log($.fn);
+myModule();
