@@ -1,0 +1,13 @@
+{
+	"sitename": "Simple Boilerplate",
+	"basedir": "./dev/views/",
+	"root": "/",
+	"analyticsCode": "UA-XXXXX-X",
+	"pages": {
+		"home": {
+			"title": "Simple Boilerplate - Just a simple frontend boilerplate",
+			"description": "A simple frontend boilerplate to build professional web projects easily and quickly.",
+			"keywords": "boilerplate, node, frontend, pug, stylus, webpack"
+		}
+	}
+}
