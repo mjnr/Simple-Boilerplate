@@ -1,2 +1,0 @@
-webpackJsonp([1],[function(n,t,e){"use strict";function u(n){return n&&n.__esModule?n:{"default":n}}var o=e(1),c=u(o),s=e(2);u(s);console.log(c["default"].fn)},,function(n,t){"use strict"}]);
-//# sourceMappingURL=bundle.main.js.map
