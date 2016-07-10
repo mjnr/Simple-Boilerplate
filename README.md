@@ -3,26 +3,15 @@
 A frontend boilerplate to build professional web projects easily and quickly.
 
 ## Features
-
-#### Automation
-- [Gulp](http://gulpjs.com/) - Task Runner.
-- [Bower](http://bower.io/) - Package Manager.
+- [NPM Scripts](https://docs.npmjs.com/misc/scripts) - Build Scripts.
 - [Browsersync](http://www.browsersync.io/) - Watch project changes and updates browsers.
-
-#### HTML
-- [Nunjucks](https://mozilla.github.io/nunjucks/) - Template Engine.
-
-#### CSS
+- [Pug](http://jade-lang.com/) - Template Engine.
+- [Critical](https://github.com/addyosmani/critical) - Add inline critical path css to html pages.
 - [Stylus](http://stylus-lang.com/) - Preprocessor.
 - [Rucksack](https://simplaio.github.io/rucksack/) - Postcss Features.
 - [Jeet](http://jeet.gs/) - Grid System.
 - [Rupture](http://jenius.github.io/rupture/) - Media Queries.
-
-#### Javascript
-- [Browserify](http://browserify.org/) - CommonJS Modules.
-- [BabelJS](https://babeljs.io/) - Javascript compiler.
-- [Karma](http://karma-runner.github.io/) - Javascript Test Runner.
-- [Jasmine](http://jasmine.github.io/) - Javascript Test Framework.
+- [Webpack](https://webpack.github.io/) - Module Bundler.
 
 ## Instalation
 
@@ -33,106 +22,83 @@ You will need to install [NodeJS](http://nodejs.org/).
 $ git clone https://github.com/mjnr/Simple-Boilerplate.git project
 $ cd project
 
-# Install Gulp and Bower, if you haven't already.
-$ npm install -g gulp bower
-
 # Installs all the dependencies.
 $ npm install
 
-# Installs all packages.
-$ bower install
-
 # Start a mini server to view the project and watch their changes on http://localhost:3000/
-$ gulp
+$ npm start
 ```
 
 ## Folder Structure
-Basically the development files are in the **src** folder and compiled files go directly to **assets**.
+Basically the development files are in the **dev** folder and compiled files go directly to **dist**.
 
 ## View Structure
-The view structure is based on Nunjucks Template Engine features and it generate .html files. See more [here](https://mozilla.github.io/nunjucks/templating.html).
+The view structure is based on Pug Template Engine features and it generate .html files. See more [here](http://jade-lang.com/reference/).
 
 #### Default Layout
-Its possible [extends](https://mozilla.github.io/nunjucks/templating.html#extends) the default [layout]("src/views/layouts/default.html") to create pages.
-```html
-{# Variables #}
-{% block variables %}
+Its possible [extends](http://jade-lang.com/reference/extends/) the default [layout]("dev/views/layouts/default.pug") to create pages.
 
-	{% set host = "http://localhost:3000" %}
-	{% set page = "" %}
-	{% set assets = "/assets/" %}
-	{% set title = "Home page" %}
-	{% set description = "Lorem ipsum dolor sit amet, consectetur." %}
-	{% set keywords = "lorem, ipsum, dolor" %}
-	{% set scripts = [] %}
+#### Data file
+**[options.json]("./options.json")**
+```json
+{
+	"sitename": "Simple Boilerplate",
+	"basedir": "./dev/views/",
+	"root": "/",
+	"analyticsCode": "UA-XXXXX-X",
+	"pages": {
+		"home": {
+			"title": "Simple Boilerplate - Just a simple frontend boilerplate",
+			"description": "A simple frontend boilerplate to build professional web projects easily and quickly.",
+			"keywords": "boilerplate, node, frontend, pug, stylus, webpack"
+		}
+	}
+}
 
-{% endblock %}
+```
 
-{# Imports #}
-{% import "macros/forms.html"	as form %}
-{% from "macros/image.html"	import img %}
+```jade
+block vars
+	- var page;
 
-<!DOCTYPE html><!--[if IE 8]><html class="ie8" lang="pt-br"><![endif]-->
-<!--[if IE 9]><html lang="pt-br" class="ie9"><![endif]-->
-<!--[if !IE]><!-->
-<html lang="pt-br"><!--<![endif]-->
+doctype html
+html(lang="en")
+	head
+		title #{pages[page].title}
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		
+		block metatags
+			include /includes/metatags
 
-	<head>
+		block styles
+			include /includes/styles
+	body
+		main.main
+			.container
+				block content
 
-		<title>{{ title }} | Simple Boilerplate</title>
+		block scripts
+			include /includes/scripts
 
-		<!-- [ Includes metatags ]-->
-		{% include "includes/metatags.html" %}
-
-		<!-- [ Includes CSS files ]-->
-		{% include "includes/styles.html" %}
-
-		<!-- [ Includes Javascript files ]-->
-		{% include "includes/scripts.html" %}
-
-	</head>
-
-<body>
-
-	<!-- [ Includes Header ]-->
-	{% include "includes/header.html" %}
-
-	<!-- [ Includes Content ]-->
-	{% block content %}{% endblock %}
-
-	<!-- [ Includes Footer ]-->
-	{% include "includes/footer.html" %}
-
-</body>
-</html>
+		block analytics
+			include /includes/analytics
 
 ```
 
 #### Page
-```html
-{% extends "layouts/default.html" %}
+```jade
+extends /layouts/default
 
-{% block variables %}
+block vars
+	- var page = "home"
 
-	{{ super() }}
+block content
+	section.content-section
+		h1.title
+			| Simple Boilerplate
 
-	{% set title = "Home Page" %}
-	{% set description = "Lorem ipsum dolor sit amet, consectetur." %}
-	{% set keywords = "lorem, ipsum, dolor" %}
-
-	{%
-		set scripts = ["home"]
-	%}
-
-{% endblock %}
-
-{% block content %}
-
-	<main role="main" class="content container">
-    <!-- content -->
-	</main>
-
-{% endblock %}
 ```
 
 ## Stylesheet Structure
@@ -161,97 +127,30 @@ The style structure is a blend of several CSS architecture concepts, with emphas
 @require 'layouts/*'
 ```
 
-#### Config
-- **[variables](src/styles/config/variables.styl)**<br/>
-  File to define project variables, alias and breakpoints. See more [here](http://stylus-lang.com/docs/variables.html).
-
-- **[functions](src/styles/config/functions.styl)**<br/>
-  Stylus functions. See more [here](http://stylus-lang.com/docs/functions.html).
-
----
-
-#### Vendors
-- **[normalize](src/styles/vendors/normalize.styl)**
-
----
-
-#### Base
-- **[base](src/styles/base/base.styl)**<br/>
-  Base style rules. See more [here](https://smacss.com/book/type-base).
-
-- **[fonts](src/styles/base/fonts.styl)**<br/>
-  File to define project @font-face. See more [here](http://simplaio.github.io/rucksack/docs/#font-src).
-
-- **[helpers](src/styles/base/helpers.styl)**<br/>
-  Classes used to override values ​​when necessary. See more
-  [here](http://rscss.io/helpers.html)
-
----
-
-#### Components
-- **[button](src/styles/components/button.styl)**
-- **[navigation](src/styles/components/navigation.styl)**
-- **[content-block](src/styles/components/content-block.styl)**
-
-Inspired by [RSCSS Components](http://rscss.io/components.html)
-
 ## Javascript structure
 
 It is currently possible to create multiple bundles with Browserify and write modules using ES6 features.
 
 #### Module sample
 ```javascript
-/*
-* Class sample
-*/
-
-class ZodiacSaint {
-
-	constructor(name, cloth) {
-		this._name = name;
-		this._cloth = cloth;
-	}
-
-	sayName() {
-		return `My name is ${this._name} and I am the ${this._cloth} saint`;
-	}
-
+export default function() {
+	console.log('Simple Boilerplate is working!');
 }
-
-class BronzeSaint extends ZodiacSaint {
-
-	constructor(name, cloth) {
-		super(name, `Bronze ${cloth}`);
-	}
-
-	sayName() {
-		return super.sayName();
-	}
-
-}
-
-export { ZodiacSaint, BronzeSaint }
 ```
 
 #### Bundle sample
 ```javascript
-import { ZodiacSaint, BronzeSaint } from "./modules/my-module";
+import myModule from './modules/my-module.js';
 
-let saintIkki = new BronzeSaint("Ikki", "Phoenix");
-saintIkki.sayName();
-// My name is Ikki and I am the Bronze Phoenix saint
-
+myModule();
 ```
 
-## Available Tasks
-- `gulp` or `gulp watch` Start watch for changes and server with Browsersync.
-- `gulp build` Run all development tasks
-- `gulp build --production` Run all development tasks and minify all files for production.
-- `gulp optimize:images` Optimize all images.
-- `gulp compile:template` Compile Nunjucks template.
-- `gulp compile:styles` Compile Stylus.
-- `gulp lint:styles` Lint Stylus files.
-- `gulp build:styles` Compile and lint Stylus files.
-- `gulp bundle:javascript` Create Javascript bundle.
-- `gulp lint:javascript` Lint Javascript files.
-- `gulp build:javascript` Create and lint Javascript bundle.
+## Useful Scripts
+- `npm start` Start watch for changes and server with Browsersync.
+- `npm run build:dev` Run all dev tasks
+- `npm run build:prod` Run all dev tasks and minify all files for production.
+- `npm run optimize:images` Optimizes all images.
+- `npm run build:views` Compile Pug template to raw html.
+- `npm run build:styles` Compile Stylus.
+- `npm run lint:styles` Lints Styles.
+- `npm run build:scripts` Lint Javascript modules and creates and bundle.
