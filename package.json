@@ -16,7 +16,7 @@
     "boilerplate",
     "node",
     "frontend",
-    "jade",
+    "pug",
     "stylus",
     "webpack"
   ],
@@ -26,26 +26,66 @@
     "babel-preset-es2015": "^6.9.0",
     "browser-sync": "^2.13.0",
     "concurrently": "^2.1.0",
+    "critical": "^0.7.3",
+    "eslint-loader": "^1.4.1",
+    "glob": "^7.0.5",
     "imagemin-cli": "^3.0.0",
+    "jeet": "6.1.2",
     "poststylus": "^0.2.3",
+    "pre-commit": "^1.1.3",
     "pug-cli": "^1.0.0-alpha6",
+    "rimraf": "^2.5.2",
     "rucksack-css": "^0.8.6",
     "rupture": "^0.6.1",
+    "stylint": "^1.5.6",
     "stylus": "^0.54.5",
     "webpack": "^1.13.1"
   },
-  "scripts": {
-    "serve": "browser-sync start --server 'dist' --files 'dist/**/*.html', 'dist/assets/css/*.css', 'dist/assets/js/*.js'",
-    "optimize:images": "imagemin dev/images/*.{gif,jpg,png,svg} --out-dir=dist/assets/images",
-    "build:scripts": "webpack -p",
-    "watch:scripts": "npm run build:scripts -- -w",
-    "build:styles": "stylus -c -u poststylus --with '[require(\"rucksack-css\")()]' -u rupture -m dev/styles/ -o dist/assets/css/",
-    "watch:styles": "npm run build:styles -- -w",
-    "build:views": "pug dev/views/pages -o dist",
-    "watch:views": "npm run build:views -- -w",
-    "watch:all": "concurrently --kill-others 'npm run watch:scripts' 'npm run watch:styles' 'npm run watch:views'",
-    "start": "concurrently --kill-others 'npm run serve' 'npm run watch:all'"
+  "config": {
+    "dev": "./dev/",
+    "dist": "./dist/",
+    "views": {
+      "dev": "./dev/views/pages ./dev/views/pages/**",
+      "dist": "./dist/"
+    },
+    "styles": {
+      "dev": "./dev/styles/",
+      "dist": "./dist/assets/css/"
+    },
+    "scripts": {
+      "dev": "./dev/scripts/",
+      "dist": "./dist/assets/js/"
+    },
+    "images": {
+      "dev": "./dev/images/*.{gif,jpg,png,svg}",
+      "dist": "./dist/assets/images/"
+    }
   },
+  "stylintignore": [
+    "dev/styles/vendors/",
+    "dev/styles/config/mediaqueries.styl",
+    "node_modules/"
+  ],
+  "scripts": {
+    "clean": "rimraf $npm_package_config_dist && mkdir -p ${npm_package_config_dist}assets/{css/fonts,js,images}",
+    "watch:scripts": "npm run build:scripts -- -w",
+    "watch:styles": "concurrently -kr 'npm run build:styles -- -w' 'npm run lint:styles -- -w'",
+    "watch:views": "npm run build:views -- -Pw",
+    "watch:all": "concurrently -kr 'npm run watch:scripts' 'npm run watch:styles' 'npm run watch:views'",
+    "build:scripts": "webpack",
+    "build:styles": "stylus -u poststylus --with '[require(\"rucksack-css\")()]' -u rupture -u jeet --sourcemap-inline $npm_package_config_styles_dev -o $npm_package_config_styles_dist",
+    "build:views": "pug -O ./options.json $npm_package_config_views_dev -o $npm_package_config_views_dist",
+    "lint:styles": "stylint ${npm_package_config_styles_dev}**/ -c ./.stylintrc",
+    "optimize:images": "imagemin $npm_package_config_images_dev --out-dir=${npm_package_config_images_dist}",
+    "critical:path": "npm run build:views && node ./critical-path.js",
+    "build:prod": "npm run build:scripts -- -p && npm run build:styles -- -c && npm run optimize:images && npm run critical:path && npm run serve",
+    "build:dev": "npm run -s build:scripts -- --bail && npm run lint:styles && npm run build:styles && npm run build:views && npm run optimize:images",
+    "serve": "browser-sync start -s $npm_package_config_dist -f '${npm_package_config_dist}**/*.html', '${npm_package_config_styles_dist}*.css', '${npm_package_config_scripts_dist}*.js'",
+    "start": "npm run clean && npm run optimize:images && concurrently -kr 'npm run watch:all' 'npm run serve'"
+  },
+  "pre-commit": [
+    "build:dev"
+  ],
   "dependencies": {
     "jquery": "^3.0.0"
   }
