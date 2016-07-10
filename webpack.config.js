@@ -1,5 +1,6 @@
-const webpack = require('webpack');
-const { resolve } = require('path');
+const webpack = require('webpack'),
+      path    = require('path'),
+      conf    = require('./package.json').config;
 
 module.exports = {
 	entry: {
@@ -9,16 +10,19 @@ module.exports = {
 	output: {
 		filename: 'bundle.[name].js',
 		publicPath: 'dist',
-		path: resolve(__dirname,'dist/assets/js')
+		path: path.resolve(__dirname, 'dist/assets/js')
 	},
-	devtool: 'sourcemap',
+	eslint: {
+		configFile: "./.eslintrc",
+		failOnError: true
+	},
+	devtool: 'inline-source-map',
 	debug: true,
 	module: {
 		loaders: [
 			{
 				test: /\.js$/,
-				loader: 'babel',
-				query: { presets: ['es2015'] },
+				loaders: ['babel?presets[]=es2015', 'eslint'],
 				exclude: /node_modules/
 			}
 		]
