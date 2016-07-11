@@ -38,6 +38,7 @@
     "rucksack-css": "^0.8.6",
     "rupture": "^0.6.1",
     "stylint": "^1.5.6",
+    "stylint-stylish": "^1.3.2",
     "stylus": "^0.54.5",
     "webpack": "^1.13.1"
   },
@@ -61,11 +62,6 @@
       "dist": "./dist/assets/images/"
     }
   },
-  "stylintignore": [
-    "dev/styles/vendors/",
-    "dev/styles/config/mediaqueries.styl",
-    "node_modules/"
-  ],
   "scripts": {
     "clean": "rimraf $npm_package_config_dist && mkdir -p ${npm_package_config_dist}assets/{css/fonts,js,images}",
     "watch:scripts": "npm run build:scripts -- -w",
@@ -81,9 +77,9 @@
     "critical:path": "npm run build:views && node ./critical-path.js",
     "build:prod": "npm run build:scripts -- -p && npm run build:styles -- -c && npm run optimize:images && npm run critical:path && npm run serve",
     "build:dev": "npm run build:scripts -- --bail && npm run lint:styles && npm run build:styles && npm run build:views && npm run optimize:images",
-    "test:lint": "npm run lint:styles && npm run lint:scripts",
-    "precommit": "npm run -s test:lint",
-    "prepush": "npm run -s test:lint",
+    "test:lint": "npm run lint:styles -s && npm run lint:scripts -s",
+    "precommit": "npm run test:lint -s",
+    "prepush": "npm run test:lint -s",
     "serve": "browser-sync start -s $npm_package_config_dist -f '${npm_package_config_dist}**/*.html', '${npm_package_config_styles_dist}*.css', '${npm_package_config_scripts_dist}*.js'",
     "start": "npm run clean && npm run optimize:images && concurrently -kr 'npm run watch:all' 'npm run serve'"
   },
