@@ -62,6 +62,11 @@
       "dist": "./dist/assets/images/"
     }
   },
+  "stylintignore": [
+  	"dev/styles/config/",
+  	"dev/styles/base/fonts.styl",
+  	"dev/styles/vendors/"
+  ],
   "scripts": {
     "clean": "rimraf $npm_package_config_dist && mkdir -p ${npm_package_config_dist}assets/{css/fonts,js,images}",
     "watch:scripts": "npm run build:scripts -- -w",
