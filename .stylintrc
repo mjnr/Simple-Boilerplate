@@ -1,7 +1,13 @@
 {
     "blocks": false,
-    "brackets": false,
-    "colons": "always",
+    "brackets": {
+    	"expect": "always",
+    	"error": true
+    },
+    "colons": {
+    	"expect": "always",
+    	"error": true
+    },
     "colors": "always",
     "commaSpace": "always",
     "commentSpace": "always",
@@ -16,7 +22,7 @@
     "maxErrors": false,
     "maxWarnings": false,
     "mixed": false,
-    "namingConvention": "lowercase-dash",
+    "namingConvention": false,
     "namingConventionStrict": false,
     "none": false,
     "noImportant": false,
@@ -24,7 +30,10 @@
     "placeholders": "always",
     "prefixVarsWithDollar": false,
     "quotePref": false,
-    "semicolons": "always",
+    "semicolons": {
+    	"expect": "always",
+    	"error": true
+    },
     "sortOrder": "alphabetical",
     "stackedProperties": "never",
     "trailingWhitespace": false,
