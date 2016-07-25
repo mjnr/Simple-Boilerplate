@@ -192,8 +192,4 @@ myModule();
 - `npm start` Start watch for changes and server with Browsersync.
 - `npm run build:dev` Run all dev tasks
 - `npm run build:prod` Run all dev tasks and minify all files for production.
-- `npm run optimize:images` Optimizes all images.
-- `npm run build:views` Compile Pug template to raw html.
-- `npm run build:styles` Compile Stylus.
-- `npm run lint:styles` Lints Styles.
-- `npm run build:scripts` Lint Javascript modules and creates and bundle.
+- `npm run lint` Lints styles and scripts.
