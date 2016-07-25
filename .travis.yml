@@ -4,8 +4,7 @@ node_js:
   - "5"
   - "6"
 script:
-  - npm run build:dev && npm run build:prod
-  - npm run test:lint
+  - npm run build:dev && npm run build:prod && npm run lint
 branches:
   only:
     - master
