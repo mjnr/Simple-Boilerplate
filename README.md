@@ -1,4 +1,4 @@
-# ![Simple Boilerplate](/assets/images/logo.png)
+# ![Simple Boilerplate](https://raw.githubusercontent.com/mjnr/Simple-Boilerplate/refactor/dist/assets/images/logo.jpg)
 
 A frontend boilerplate to build professional web projects easily and quickly.
 
@@ -22,21 +22,51 @@ You will need to install [NodeJS](http://nodejs.org/).
 $ git clone https://github.com/mjnr/Simple-Boilerplate.git project
 $ cd project
 
-# Installs all the dependencies.
-$ npm install
-
-# Start a mini server to view the project and watch their changes on http://localhost:3000/
-$ npm start
+# Installs all the dependencies and starts a mini server on port 3000.
+$ npm install && npm start
 ```
 
 ## Folder Structure
 Basically the development files are in the **dev** folder and compiled files go directly to **dist**.
+```
+dev
+├── images
+│   └── logo.png
+├── scripts
+│   ├── main.js
+│   └── modules
+│       └── my-module.js
+├── styles
+│   ├── base
+│   │   ├── base.styl
+│   │   ├── fonts.styl
+│   │   └── helpers.styl
+│   ├── components
+│   │   └── my-component.styl
+│   ├── config
+│   │   ├── aliases.styl
+│   │   ├── functions.styl
+│   │   ├── mediaqueries.styl
+│   │   └── variables.styl
+│   ├── layouts
+│   │   └── container.styl
+│   ├── main.styl
+│   └── vendors
+│       └── normalize.styl
+└── views
+    ├── includes
+    │   ├── analytics.pug
+    │   ├── metatags.pug
+    │   ├── scripts.pug
+    │   └── styles.pug
+    ├── layouts
+    │   └── default.pug
+    └── pages
+        └── index.pug
+```
 
-## View Structure
+## Views
 The view structure is based on Pug Template Engine features and it generate .html files. See more [here](http://jade-lang.com/reference/).
-
-#### Default Layout
-Its possible [extends](http://jade-lang.com/reference/extends/) the default [layout]("dev/views/layouts/default.pug") to create pages.
 
 #### Data file
 **[options.json]("./options.json")**
@@ -54,9 +84,9 @@ Its possible [extends](http://jade-lang.com/reference/extends/) the default [lay
 		}
 	}
 }
-
 ```
-
+#### Default Layout
+Its possible [extends](http://jade-lang.com/reference/extends/) the default [layout]("dev/views/layouts/default.pug") to create pages.
 ```jade
 block vars
 	- var page;
@@ -101,51 +131,64 @@ block content
 
 ```
 
-## Stylesheet Structure
+## Styles
 The style structure is a blend of several CSS architecture concepts, with emphasis on [SMACSS](https://smacss.com/book) and [RSCSS](http://rscss.io/) . Currently, it is divided into:
 
 ```stylus
+/*
+* Simple Boilerplate
+* https://github.com/mjnr/Simple-Boilerplate
+* -----------------------------------
+* Author: Milson Júnior
+* URL: https://github.com/mjnr
+* -----------------------------------
+* Project Name
+* -----------------------------------
+*/
+
 // Config
 // -------------------------
-@require 'config/*'
+@require 'config/*';
 
 // Vendors
 // -------------------------
-@require 'vendors/*'
+@require 'vendors/*';
 
 // Base
 // -------------------------
-@require 'base/*'
+@require 'base/*';
+
+// Grid System
+// -------------------------
+@require 'jeet';
 
 // Components
 // -------------------------
-@require 'components/*'
+@require 'components/*';
 
 // Layouts
 // -------------------------
-@require 'jeet'
-@require 'layouts/*'
+@require 'layouts/*';
 ```
 
-## Javascript structure
-
+## Scripts
 It is currently possible to create multiple bundles with Browserify and write modules using ES6 features.
 
-#### Module sample
+#### Module
 ```javascript
 export default function() {
 	console.log('Simple Boilerplate is working!');
 }
 ```
 
-#### Bundle sample
+#### Bundle
 ```javascript
 import myModule from './modules/my-module.js';
 
 myModule();
 ```
 
-## Useful Scripts
+## Available tasks
 - `npm start` Start watch for changes and server with Browsersync.
 - `npm run build:dev` Run all dev tasks
 - `npm run build:prod` Run all dev tasks and minify all files for production.
