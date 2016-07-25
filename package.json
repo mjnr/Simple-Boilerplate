@@ -32,6 +32,7 @@
     "husky": "^0.11.4",
     "imagemin-cli": "^3.0.0",
     "jeet": "6.1.2",
+    "mkdirp": "^0.5.1",
     "poststylus": "^0.2.3",
     "pug-cli": "^1.0.0-alpha6",
     "rimraf": "^2.5.2",
@@ -63,12 +64,12 @@
     }
   },
   "stylintignore": [
-  	"dev/styles/config/",
-  	"dev/styles/base/fonts.styl",
-  	"dev/styles/vendors/"
+    "dev/styles/config/",
+    "dev/styles/base/fonts.styl",
+    "dev/styles/vendors/"
   ],
   "scripts": {
-    "clean": "rimraf $npm_package_config_dist && mkdir -p ${npm_package_config_dist}assets/{css/fonts,js,images}",
+    "clean": "rimraf $npm_package_config_dist && mkdirp ${npm_package_config_dist}assets/{css/fonts,js,images}",
     "watch:scripts": "npm run build:scripts -- -w",
     "watch:styles": "concurrently -kr 'npm run build:styles -- -w' 'npm run lint:styles -- -w'",
     "watch:views": "npm run build:views -- -Pw",
