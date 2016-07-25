@@ -1,4 +1,4 @@
-# ![Simple Boilerplate](https://raw.githubusercontent.com/mjnr/Simple-Boilerplate/refactor/dist/assets/images/logo.jpg)
+# ![Simple Boilerplate](https://raw.githubusercontent.com/mjnr/Simple-Boilerplate/refactor/dev/images/logo.jpg)
 
 A frontend boilerplate to build professional web projects easily and quickly.
 
