@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "4"
+  - "5"
+  - "6"
+script:
+  - npm run build:dev && npm run build:prod
+  - npm run test:lint
+branches:
+  only:
+    - master
