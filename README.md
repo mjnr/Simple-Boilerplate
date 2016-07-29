@@ -1,4 +1,8 @@
 # ![Simple Boilerplate](https://raw.githubusercontent.com/mjnr/Simple-Boilerplate/refactor/dev/images/logo.jpg)
+[![Build Status](https://travis-ci.org/mjnr/Simple-Boilerplate.svg?branch=master)](https://travis-ci.org/mjnr/Simple-Boilerplate)
+[![devDependency Status](https://david-dm.org/mjnr/Simple-Boilerplate/dev-status.svg)](https://david-dm.org/mjnr/Simple-Boilerplate#info=devDependencies)
+[![Dependency Status](https://david-dm.org/mjnr/Simple-Boilerplate.svg)](https://david-dm.org/mjnr/Simple-Boilerplate)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)]()
 
 A frontend boilerplate to build professional web projects easily and quickly.
 
