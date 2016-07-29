@@ -69,7 +69,7 @@
     "dev/styles/vendors/"
   ],
   "scripts": {
-    "clean": "rimraf $npm_package_config_dist && mkdirp ${npm_package_config_dist}assets/{css/fonts,js,images}",
+    "clean": "rimraf $npm_package_config_dist && mkdirp ${npm_package_config_dist}assets/css/fonts/ ${npm_package_config_dist}assets/js/ ${npm_package_config_dist}assets/images/",
     "watch:scripts": "npm run build:scripts -- -w",
     "watch:styles": "concurrently -kr 'npm run build:styles -- -w' 'npm run lint:styles -- -w'",
     "watch:views": "npm run build:views -- -Pw",
