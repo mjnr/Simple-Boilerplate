@@ -69,7 +69,9 @@
     "dev/styles/vendors/"
   ],
   "scripts": {
-    "clean": "rimraf $npm_package_config_dist && mkdirp ${npm_package_config_dist}assets/css/fonts/ ${npm_package_config_dist}assets/js/ ${npm_package_config_dist}assets/images/",
+    "reset": "npm run clean && npm run create",
+    "clean": "rimraf $npm_package_config_dist",
+    "create": "mkdirp ${npm_package_config_dist}/css/fonts && mkdirp ${npm_package_config_dist}/js && mkdirp ${npm_package_config_dist}/images",
     "watch:scripts": "npm run build:scripts -- -w",
     "watch:styles": "concurrently -kr 'npm run build:styles -- -w' 'npm run lint:styles -- -w'",
     "watch:views": "npm run build:views -- -Pw",
@@ -82,12 +84,12 @@
     "optimize:images": "imagemin $npm_package_config_images_dev --out-dir=${npm_package_config_images_dist}",
     "critical:path": "npm run build:views && node ./critical-path.js",
     "build:prod": "npm run build:scripts -- -p && npm run build:styles -- -c && npm run optimize:images && npm run critical:path",
-    "build:dev": "npm run clean && npm run build:scripts -- --bail && npm run lint:styles && npm run build:styles && npm run build:views && npm run optimize:images",
+    "build:dev": "npm run reset && npm run build:scripts -- --bail && npm run lint:styles && npm run build:styles && npm run build:views && npm run optimize:images",
     "lint": "npm run lint:styles -s && npm run lint:scripts -s",
     "precommit": "npm run lint -s",
     "prepush": "npm run lint -s",
     "serve": "browser-sync start -s $npm_package_config_dist -f '${npm_package_config_dist}**/*.html', '${npm_package_config_styles_dist}*.css', '${npm_package_config_scripts_dist}*.js'",
-    "start": "npm run clean && npm run optimize:images && concurrently -kr 'npm run watch:all' 'npm run serve'"
+    "start": "npm run reset && npm run optimize:images && concurrently -kr 'npm run watch:all' 'npm run serve'"
   },
   "dependencies": {
     "jquery": "^3.0.0"

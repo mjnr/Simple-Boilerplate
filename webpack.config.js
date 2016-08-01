@@ -5,12 +5,12 @@ const webpack = require('webpack'),
 module.exports = {
 	entry: {
 		vendor: ['jquery'],
-		main: './dev/scripts/main.js'
+		main: path.resolve(conf.scripts.dev+'main.js')
 	},
 	output: {
 		filename: 'bundle.[name].js',
-		publicPath: 'dist',
-		path: path.resolve(__dirname, 'dist/assets/js')
+		publicPath: path.resolve(conf.dist),
+		path: path.resolve(conf.scripts.dist)
 	},
 	eslint: {
 		configFile: "./.eslintrc",
