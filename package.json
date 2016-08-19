@@ -71,7 +71,7 @@
   "scripts": {
     "reset": "npm run clean && npm run create",
     "clean": "rimraf $npm_package_config_dist",
-    "create": "mkdirp ${npm_package_config_dist}/css/fonts && mkdirp ${npm_package_config_dist}/js && mkdirp ${npm_package_config_dist}/images",
+    "create": "mkdirp ${npm_package_config_dist}assets/css/fonts/ ${npm_package_config_dist}assets/js/ ${npm_package_config_dist}assets/images/",
     "watch:scripts": "npm run build:scripts -- -w",
     "watch:styles": "concurrently -kr 'npm run build:styles -- -w' 'npm run lint:styles -- -w'",
     "watch:views": "npm run build:views -- -Pw",
