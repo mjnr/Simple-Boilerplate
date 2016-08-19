@@ -1,3 +1,5 @@
+'use strict';
+
 const imagemin = require('imagemin'),
 	path = require('path'),
 	glob = require('glob'),
@@ -12,11 +14,12 @@ function optimizeImages(err, files) {
 	if (err) throw err;
 
 	files.forEach((file) => {
-		let folder = path.dirname(file).replace(paths.dev.split('/*').shift(), paths.dist);
+		const folder = path.dirname(file).replace(paths.dev.split('/*').shift(), paths.dist);
 
 		imagemin([file], folder);
 	});
-	console.log(`${files.length} minified images`);
+	
+	console.log(`${files.length} minified images.`);
 }
 
 glob(paths.dev, optimizeImages);
