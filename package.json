@@ -30,7 +30,7 @@
     "eslint-loader": "1.4.1",
     "glob": "7.0.5",
     "husky": "0.11.4",
-    "imagemin-cli": "3.0.0",
+    "imagemin": "^5.2.2",
     "jeet": "6.1.2",
     "mkdirp": "0.5.1",
     "poststylus": "0.2.3",
@@ -59,7 +59,7 @@
       "dist": "./dist/assets/js/"
     },
     "images": {
-      "dev": "./dev/images/*.{gif,jpg,png,svg}",
+      "dev": "./dev/images/**/*.{gif,jpg,png,svg}",
       "dist": "./dist/assets/images/"
     }
   },
@@ -71,7 +71,7 @@
   "scripts": {
     "reset": "npm run clean && npm run create",
     "clean": "rimraf $npm_package_config_dist",
-    "create": "mkdirp ${npm_package_config_dist}/css/fonts && mkdirp ${npm_package_config_dist}/js && mkdirp ${npm_package_config_dist}/images",
+    "create": "mkdirp ${npm_package_config_dist}assets/css/fonts/ ${npm_package_config_dist}assets/js/ ${npm_package_config_dist}assets/images/",
     "watch:scripts": "npm run build:scripts -- -w",
     "watch:styles": "concurrently -kr 'npm run build:styles -- -w' 'npm run lint:styles -- -w'",
     "watch:views": "npm run build:views -- -Pw",
@@ -81,7 +81,7 @@
     "build:views": "pug -O ./options.json $npm_package_config_views_dev -o $npm_package_config_views_dist",
     "lint:styles": "stylint ${npm_package_config_styles_dev}**/ -c ./.stylintrc",
     "lint:scripts": "eslint ${npm_package_config_scripts_dev}** ${npm_package_config_scripts_dev}* -c ./.eslintrc",
-    "optimize:images": "imagemin $npm_package_config_images_dev --out-dir=${npm_package_config_images_dist}",
+    "optimize:images": "node ./imagemin.js",
     "critical:path": "npm run build:views && node ./critical-path.js",
     "build:prod": "npm run build:scripts -- -p && npm run build:styles -- -c && npm run optimize:images && npm run critical:path",
     "build:dev": "npm run reset && npm run build:scripts -- --bail && npm run lint:styles && npm run build:styles && npm run build:views && npm run optimize:images",
