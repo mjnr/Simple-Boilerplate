@@ -31,6 +31,8 @@
     "glob": "7.0.5",
     "husky": "0.11.4",
     "imagemin": "^5.2.2",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-pngquant": "^5.0.0",
     "jeet": "6.1.2",
     "mkdirp": "0.5.1",
     "poststylus": "0.2.3",
