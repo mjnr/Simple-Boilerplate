@@ -176,7 +176,7 @@ The style structure is a blend of several CSS architecture concepts, with emphas
 ```
 
 ## Scripts
-It is currently possible to create multiple bundles with Browserify and write modules using ES6 features.
+It is currently possible to create multiple bundles with Webpack and write modules using ES6 features.
 
 #### Module
 ```javascript
